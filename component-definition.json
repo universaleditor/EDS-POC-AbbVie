@@ -757,8 +757,8 @@
                   "rows": "1",
                   "jcr:title": "twocoloumwithimage",
                   "fieldType": "twocoloumwithimage",
-                  "name": "Nav v1",
-                  "model": "nav-v1"
+                  "name": "twocoloumwithimage",
+                  "model": "twocoloumwithimage"
                 }
               }
             }
