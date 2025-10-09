@@ -156,6 +156,51 @@
               }
             }
           }
+        },
+        {
+          "title": "Nav v1",
+          "id": "nav-v1",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Nav v1",
+                  "model": "nav-v1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Nav v2",
+          "id": "nav-v2",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Nav v2",
+                  "model": "nav-v2"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Nav v3",
+          "id": "nav-v3",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Nav v3",
+                  "model": "nav-v3"
+                }
+              }
+            }
+          }
         }
       ]
     }
