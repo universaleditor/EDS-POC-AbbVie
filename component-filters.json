@@ -75,5 +75,14 @@
       "wizard",
       "range"
     ]
+  },
+  {
+    "id": "twocoloumwithimage",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
+    ]
   }
 ]
