@@ -754,7 +754,11 @@
                 "resourceType": "core/franklin/components/columns/v1/columns",
                 "template": {
                   "columns": "2",
-                  "rows": "1"
+                  "rows": "1",
+                  "jcr:title": "twocoloumwithimage",
+                  "fieldType": "twocoloumwithimage",
+                  "name": "Nav v1",
+                  "model": "nav-v1"
                 }
               }
             }
