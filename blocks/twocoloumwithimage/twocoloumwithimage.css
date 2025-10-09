@@ -1,33 +1,80 @@
-.columns > div {
+/* Wrapper styles */
+.twocoloumwithimage-wrapper {
+  background-color: #ffffff; /* white background */
+  padding: 40px 20px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 }
 
-.columns img {
+.twocoloumwithimage.block {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two columns */
+  gap: 40px;
+  align-items: center;
+  max-width: 1200px;
   width: 100%;
 }
 
-.columns > div > div {
-  order: 1;
-}
-
-.columns > div > .columns-img-col {
-  order: 0;
-}
-
-.columns > div > .columns-img-col img {
+/* Left column (image) */
+.twocoloumwithimage.block > div:first-child img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
   display: block;
+  margin: 0 auto;
 }
 
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+/* Right column (text) */
+.twocoloumwithimage.block > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #002f6c; /* dark navy-blue for text */
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+/* Headline / paragraph */
+.twocoloumwithimage.block h2 {
+  font-size: 20px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #002f6c; /* matches Skyrizi theme */
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+
+/* CTA Button */
+.twocoloumwithimage.block .cta-button,
+.twocoloumwithimage.block a.button {
+  background-color: #c30045; /* pink/magenta CTA */
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  width: fit-content;
+  transition: background 0.3s ease;
+}
+
+.twocoloumwithimage.block .cta-button:hover,
+.twocoloumwithimage.block a.button:hover {
+  background-color: #9b0036;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .twocoloumwithimage.block {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
+  .twocoloumwithimage.block > div:nth-child(2) {
+    align-items: center;
+  }
+
+  .twocoloumwithimage.block h2 {
+    font-size: 18px;
   }
 }
