@@ -138,8 +138,8 @@
             "value": "highlight"
           },
           {
-            "name": "abbvbackgroundcontainerContent",
-            "value": "abbvbackgroundcontainerContent"
+            "name": "twocoloumwithimage",
+            "value": "twocoloumwithimage"
           }
         ]
       }
@@ -5153,8 +5153,8 @@
     ]
   },
   {
-    "id": "abbvbackgroundcontainercontent",
-    "title" :"abbvbackgroundcontainercontent",
+    "id": "twocoloumwithimage",
+    "title" :"twocoloumwithimage",
     "fields": [
       {
         "component": "text",
