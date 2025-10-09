@@ -746,8 +746,8 @@
           }
         },
         {
-          "title": "abbvbackgroundcontainercontent",
-          "id": ""abbvbackgroundcontainercontent",
+          "title": "twocoloumwithimage",
+          "id": "twocoloumwithimage",
           "plugins": {
             "xwalk": {
               "page": {
