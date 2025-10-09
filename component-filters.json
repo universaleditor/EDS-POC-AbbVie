@@ -19,7 +19,9 @@
       "nav-v1",
       "nav-v2",
       "nav-v3" ,
-      "abbv-background-container-content"
+      "abbv-background-container-content",
+      "form",
+      "embed-adaptive-form"
     ]
   },
   {
