@@ -753,8 +753,7 @@
               "page": {
                "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "columns": "2",
-                  "rows": "1",
+                  
                   "jcr:title": "twocoloumwithimage",
                   "fieldType": "twocoloumwithimage",
                   "name": "twocoloumwithimage",
