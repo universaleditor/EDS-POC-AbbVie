@@ -5221,6 +5221,7 @@
   },
   {
     "id": "contentSection",
+    "title": "contentSection",
     "fields": [
       {
         "component": "text",
