@@ -214,5 +214,51 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "nav-v1",
+    "title": "Nav v1",
+    "fields": [
+      {
+        "id": "eyebrow",
+        "title": "Eyebrow (display only)",
+        "type": "text",
+        "default": "Hardcoded eyebrow",
+        "description": "Shown in EDS so the block appears; your JS can ignore this."
+      }
+    ]
+  },
+  {
+    "id": "nav-v2",
+    "title": "Nav v2",
+    "fields": [
+      {
+        "id": "navItems",
+        "title": "Nav Items (exactly 3)",
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "fields": [
+            { "id": "label", "title": "Label", "type": "text", "default": "Item" },
+            { "id": "url", "title": "URL", "type": "url", "default": "/#" }
+          ]
+        },
+        "description": "Exists only so EDS shows the model; runtime can use hardcoded links."
+      }
+    ]
+  },
+  {
+    "id": "nav-v3",
+    "title": "Nav v3",
+    "fields": [
+      {
+        "id": "note",
+        "title": "Placeholder",
+        "type": "text",
+        "default": "Define later"
+      }
+    ]
   }
 ]
