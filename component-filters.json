@@ -84,5 +84,13 @@
       "button",
       "title"
     ]
+  },
+  {
+    "id": "contentSection",
+    "components": [
+      "text",
+    
+      "title"
+    ]
   }
 ]
