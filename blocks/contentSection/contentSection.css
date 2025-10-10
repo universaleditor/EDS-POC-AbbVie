@@ -1,151 +1,207 @@
-/* === Precise selector chain matching your HTML structure ===
-   .section.contentsection-container
-     > .contentsection-wrapper
-       > .contentsection.block
-         > div
-           > div
-             > [data-aue-prop="text"]
-*/
+/* ======================================================
+   USES section — matches HTML structure you pasted + fallback
+   Paste this into a stylesheet that loads AFTER AEM clientlibs
+   ====================================================== */
 
+/* --- Target exact nested structure OR fallback to contentsection richtext --- */
 div.section.contentsection-container
-  > .contentsection-wrapper
+  > div.contentsection-wrapper
   > div.contentsection.block
   > div
   > div
-  > [data-aue-prop="text"] {
-  display: block !important;
+  > [data-aue-prop="text"],
+.contentsection.block [data-aue-prop="text"] {
   box-sizing: border-box !important;
-  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  font-family: "Helvetica Neue", "Roboto", Arial, sans-serif !important;
   color: #575756 !important;
   -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  /* keep the content narrow so it matches the screenshot spacing */
+  max-width: 1100px !important;
+  margin: 0 auto !important;
+  padding: 0 18px !important;
 }
 
-/* Heading */
+/* === Heading: "USES" === */
 div.section.contentsection-container
-  > .contentsection-wrapper
+  > div.contentsection-wrapper
   > div.contentsection.block
   > div
   > div
-  > [data-aue-prop="text"] > h1 {
-  font-size: 30px !important;
+  > [data-aue-prop="text"] h1,
+.contentsection.block [data-aue-prop="text"] h1 {
+  font-size: 32px !important;               /* matches screenshot scale */
   line-height: 1 !important;
-  margin: 0 0 22px 0 !important;
-  color: #00a3df !important;
-  font-weight: 700 !important;
+  margin: 0 0 26px 0 !important;
+  color: #00a3df !important;                 /* bright blue from screenshot */
+  font-weight: 800 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
+  letter-spacing: 0.8px !important;
+  text-align: left !important;
 }
 
-/* Intro paragraph immediately under heading */
+/* === Intro paragraph immediately under heading === */
 div.section.contentsection-container
-  > .contentsection-wrapper
+  > div.contentsection-wrapper
   > div.contentsection.block
   > div
   > div
-  > [data-aue-prop="text"] > p:first-of-type {
-  font-size: 18px !important;
+  > [data-aue-prop="text"] > p:first-of-type,
+.contentsection.block [data-aue-prop="text"] > p:first-of-type {
+  font-size: 20px !important;               /* large, readable intro text */
   font-weight: 300 !important;
-  line-height: 1.65 !important;
-  margin: 0 0 20px 0 !important;
+  line-height: 1.6 !important;
+  margin: 0 0 26px 0 !important;
   color: #4f4f4f !important;
-  max-width: 820px !important;
+  max-width: 980px !important;
 }
 
-/* UL reset and controlled bullets */
+/* === UL reset: remove browser default and control spacing === */
 div.section.contentsection-container
-  > .contentsection-wrapper
+  > div.contentsection-wrapper
   > div.contentsection.block
   > div
   > div
-  > [data-aue-prop="text"] ul {
-  margin: 0 !important;
+  > [data-aue-prop="text"] ul,
+.contentsection.block [data-aue-prop="text"] ul {
+  margin: 0 0 0 0 !important;
   padding: 0 !important;
   list-style: none !important;
 }
 
-/* LI styling and custom dot */
+/* === LI: text size, wrap alignment, spacing to match screenshot === */
 div.section.contentsection-container
-  > .contentsection.wrapper, /* no-op to make devtools grouping easier */
-div.section.contentsection-container
-  > .contentsection-wrapper
+  > div.contentsection-wrapper
   > div.contentsection.block
   > div
   > div
-  > [data-aue-prop="text"] ul li {
+  > [data-aue-prop="text"] ul li,
+.contentsection.block [data-aue-prop="text"] ul li {
   position: relative !important;
-  padding-left: 38px !important;
-  margin: 0 0 14px 0 !important;
-  font-size: 18px !important;
+  padding-left: 52px !important;            /* space for the large custom dot */
+  margin: 0 0 26px 0 !important;             /* tall gap between bullets */
+  font-size: 22px !important;                /* large bullet text like screenshot */
   font-weight: 300 !important;
-  line-height: 1.6 !important;
+  line-height: 1.8 !important;               /* airy spacing like image */
   color: #575756 !important;
-  max-width: 900px !important;
+  word-wrap: break-word !important;
+  max-width: 980px !important;
 }
 
+/* === Custom dot that visually matches the screenshot === */
 div.section.contentsection-container
-  > .contentsection-wrapper
+  > div.contentsection-wrapper
   > div.contentsection.block
   > div
   > div
-  > [data-aue-prop="text"] ul li::before {
-  content: "" !important;
-  width: 10px !important;
-  height: 10px !important;
-  background: #9a9a9a !important;
-  border-radius: 50% !important;
+  > [data-aue-prop="text"] ul li::before,
+.contentsection.block [data-aue-prop="text"] ul li::before {
+  content: '' !important;
   display: block !important;
   position: absolute !important;
-  left: 10px !important;
+  left: 14px !important;                     /* dot distance from left */
   top: 50% !important;
   transform: translateY(-50%) !important;
+  width: 12px !important;                    /* larger dot to match screenshot */
+  height: 12px !important;
+  border-radius: 50% !important;
+  background: #6b6b6b !important;            /* neutral gray */
 }
 
-/* Links in text */
+/* === Links inside text/list === */
 div.section.contentsection-container
-  > .contentsection-wrapper
+  > div.contentsection-wrapper
   > div.contentsection.block
   > div
   > div
-  > [data-aue-prop="text"] a {
+  > [data-aue-prop="text"] a,
+.contentsection.block [data-aue-prop="text"] a {
   color: #8c1d40 !important;
   font-weight: 700 !important;
   text-decoration: none !important;
 }
 div.section.contentsection-container
-  > .contentsection-wrapper
+  > div.contentsection-wrapper
   > div.contentsection.block
   > div
   > div
-  > [data-aue-prop="text"] a:hover {
+  > [data-aue-prop="text"] a:hover,
+.contentsection.block [data-aue-prop="text"] a:hover {
   text-decoration: underline !important;
 }
 
-/* Small responsive tweak */
-@media (max-width: 767px) {
+/* === Remove any stray margins from AEM wrapper divs that can push content off === */
+div.section.contentsection-container > div.contentsection-wrapper > div.contentsection.block > div,
+div.section.contentsection-container > div.contentsection-wrapper > div.contentsection.block > div > div {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* === Responsive: tighten up on small screens === */
+@media (max-width: 991px) {
   div.section.contentsection-container
-    > .contentsection-wrapper
+    > div.contentsection-wrapper
     > div.contentsection.block
     > div
     > div
-    > [data-aue-prop="text"] {
-    padding: 0 8px !important;
+    > [data-aue-prop="text"],
+  .contentsection.block [data-aue-prop="text"] {
+    padding: 0 12px !important;
+    max-width: 100% !important;
   }
+
   div.section.contentsection-container
-    > .contentsection-wrapper
+    > div.contentsection-wrapper
     > div.contentsection.block
     > div
     > div
-    > [data-aue-prop="text"] > h1 {
+    > [data-aue-prop="text"] h1,
+  .contentsection.block [data-aue-prop="text"] h1 {
     font-size: 22px !important;
-    margin-bottom: 12px !important;
+    margin-bottom: 14px !important;
   }
+
   div.section.contentsection-container
-    > .contentsection-wrapper
+    > div.contentsection-wrapper
     > div.contentsection.block
     > div
     > div
-    > [data-aue-prop="text"] ul li {
+    > [data-aue-prop="text"] > p:first-of-type,
+  .contentsection.block [data-aue-prop="text"] > p:first-of-type,
+  div.section.contentsection-container
+    > div.contentsection-wrapper
+    > div.contentsection.block
+    > div
+    > div
+    > [data-aue-prop="text"] ul li,
+  .contentsection.block [data-aue-prop="text"] ul li {
     font-size: 16px !important;
-    padding-left: 30px !important;
+    padding-left: 34px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+  }
+
+  div.section.contentsection-container
+    > div.contentsection-wrapper
+    > div.contentsection.block
+    > div
+    > div
+    > [data-aue-prop="text"] ul li::before,
+  .contentsection.block [data-aue-prop="text"] ul li::before {
+    width: 9px !important;
+    height: 9px !important;
+    left: 10px !important;
   }
 }
+
+/* Optional debug outline — uncomment while testing to see the matched element */
+/*
+div.section.contentsection-container
+  > div.contentsection-wrapper
+  > div.contentsection.block
+  > div
+  > div
+  > [data-aue-prop="text"] {
+  outline: 3px dashed rgba(0,163,223,0.4) !important;
+}
+*/
