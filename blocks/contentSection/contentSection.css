@@ -1,90 +1,128 @@
+/* =========================================================
+   === Content Section: USES (Generic, No Section ID) ===
+   Targets .section.contentsection-container + .contentsection.block
+   ========================================================= */
 
+/* === Outer Section === */
 .section.contentsection-container {
-  background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%) !important;
-  padding: 60px 20px !important;
-  box-sizing: border-box;
+  padding: 60px 24px !important;
+  background: #ffffff !important;
+  box-sizing: border-box !important;
 }
 
+/* === Content Wrapper === */
+.section.contentsection-container .contentsection-wrapper,
 .section.contentsection-container .contentsection.block {
-  display: block !important;
-  max-width: 900px !important;
+  max-width: 980px !important;
   margin: 0 auto !important;
-  box-sizing: border-box;
+  width: 100% !important;
+  box-sizing: border-box !important;
   text-align: left !important;
 }
 
+/* === Rich Text Container === */
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] {
+  display: block !important;
+  font-family: "Roboto", "Helvetica Neue", Arial, sans-serif !important;
+  color: #575756 !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
 /* === Heading (USES) === */
-.section.contentsection-container .contentsection.block h1 {
-  font-family: var(--font-univers-bold-condensed), Arial, Helvetica, sans-serif !important;
-  font-size: 28px !important;
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] h1 {
+  font-size: 30px !important;
+  line-height: 1 !important;
+  margin: 0 0 22px 0 !important;
+  color: #00a3df !important;       /* Blue title */
   font-weight: 700 !important;
-  color: #0096d6 !important; /* Matches the blue heading in the image */
   text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-  margin: 0 0 25px !important;
+  letter-spacing: 0.6px !important;
 }
 
 /* === Intro paragraph === */
-.section.contentsection-container .contentsection.block p {
-  font-family: var(--font-univers-light), Roboto, Helvetica Neue, Helvetica, Arial, sans-serif, "abbv-iconFont" !important;
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] > p:first-of-type {
   font-size: 18px !important;
   font-weight: 300 !important;
-  color: #575756 !important;
-  line-height: 1.6 !important;
-  margin: 0 0 20px !important;
-  max-width: 800px !important;
+  line-height: 1.65 !important;
+  margin: 0 0 20px 0 !important;
+  color: #4f4f4f !important;
+  max-width: 820px !important;
 }
 
-/* === Bullet list styling === */
-.section.contentsection-container .contentsection.block ul {
-  list-style-type: disc !important;
-  padding-left: 22px !important;
+/* === Bullet list container === */
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] ul {
   margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
 }
 
-.section.contentsection-container .contentsection.block ul li {
-  font-family: var(--font-univers-light), Roboto, Helvetica Neue, Helvetica, Arial, sans-serif, "abbv-iconFont" !important;
+/* === Bullet list items === */
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li {
+  position: relative !important;
+  padding-left: 36px !important;
+  margin: 0 0 14px 0 !important;
   font-size: 18px !important;
   font-weight: 300 !important;
-  color: #575756 !important;
   line-height: 1.6 !important;
-  margin-bottom: 10px !important;
-  max-width: 800px !important;
+  color: #575756 !important;
+  max-width: 900px !important;
 }
 
-/* === Optional anchor link styles inside text === */
-.section.contentsection-container .contentsection.block p a,
-.section.contentsection-container .contentsection.block ul li a {
+/* === Custom Bullet Dot === */
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li::before {
+  content: '' !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: #9a9a9a !important;
+  border-radius: 50% !important;
+  display: block !important;
+  position: absolute !important;
+  left: 8px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+/* === Links === */
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] a {
   color: #8c1d40 !important;
   font-weight: 700 !important;
   text-decoration: none !important;
 }
 
-.section.contentsection-container .contentsection.block p a:hover,
-.section.contentsection-container .contentsection.block ul li a:hover {
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] a:hover {
   text-decoration: underline !important;
 }
 
-/* === Responsive adjustments === */
+/* === Reset default margins on wrapper divs === */
+.section.contentsection-container .contentsection.block > div {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* === Responsive Adjustments === */
 @media (max-width: 767px) {
   .section.contentsection-container {
-    padding: 40px 15px !important;
+    padding: 28px 16px !important;
   }
 
-  .section.contentsection-container .contentsection.block h1 {
+  .section.contentsection-container .contentsection.block [data-aue-prop="text"] h1 {
     font-size: 22px !important;
-    text-align: center !important;
-    margin-bottom: 15px !important;
-  }
-
-  .section.contentsection-container .contentsection.block p,
-  .section.contentsection-container .contentsection.block ul li {
-    font-size: 16px !important;
+    margin-bottom: 12px !important;
     text-align: left !important;
   }
 
-  .section.contentsection-container .contentsection.block ul {
-    padding-left: 18px !important;
+  .section.contentsection-container .contentsection.block [data-aue-prop="text"] > p:first-of-type,
+  .section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li {
+    font-size: 16px !important;
+  }
+
+  .section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li {
+    padding-left: 30px !important;
+  }
+
+  .section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li::before {
+    left: 6px !important;
+    width: 9px !important;
+    height: 9px !important;
   }
 }
-
