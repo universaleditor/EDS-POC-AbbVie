@@ -44,19 +44,10 @@
 }
 .section.contentsection-container .contentsection.block ul li {
   position: relative;
-  padding-left: 24px;   /* space for custom bullet */
+  
   font-size: 1.125rem;
   line-height: 1.6;
   margin-bottom: 10px;
   color: #4a4a4a;
 }
 
-.section.contentsection-container .contentsection.block ul li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: #4a4a4a;       /* custom bullet color */
-  font-size: 1.5rem;    /* larger bullet like in the image */
-  line-height: 1.2;
-}
