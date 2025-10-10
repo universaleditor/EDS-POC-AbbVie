@@ -19,7 +19,7 @@
       "nav-v1",
       "nav-v2",
       "nav-v3" ,
-      "contentSection",
+      "contentsection",
       "twocoloumwithimage",
       "form",
       "embed-adaptive-form"
@@ -82,14 +82,6 @@
       "text",
       "image",
       "button",
-      "title"
-    ]
-  },
-  {
-    "id": "contentSection",
-    "components": [
-      "text",
-    
       "title"
     ]
   }
