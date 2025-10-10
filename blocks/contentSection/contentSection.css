@@ -1,4 +1,38 @@
+/* Target the specific section container and content block */
 .section.contentsection-container .contentsection.block {
-background-color: pink !important;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+  line-height: 1.6;
+}
 
+/* Heading (USES) */
+.section.contentsection-container .contentsection.block h1 {
+  color: #008fd5; /* matches the bright blue */
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+/* Paragraph under heading */
+.section.contentsection-container .contentsection.block p {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+}
+
+/* Bullet list */
+.section.contentsection-container .contentsection.block ul {
+  list-style: disc;
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+.section.contentsection-container .contentsection.block ul li {
+  font-size: 1.05rem;
+  margin-bottom: 10px;
+  line-height: 1.5;
 }
