@@ -1,207 +1,77 @@
-/* ======================================================
-   USES section — matches HTML structure you pasted + fallback
-   Paste this into a stylesheet that loads AFTER AEM clientlibs
-   ====================================================== */
-
-/* --- Target exact nested structure OR fallback to contentsection richtext --- */
-div.section.contentsection-container
-  > div.contentsection-wrapper
-  > div.contentsection.block
-  > div
-  > div
-  > [data-aue-prop="text"],
-.contentsection.block [data-aue-prop="text"] {
-  box-sizing: border-box !important;
-  font-family: "Helvetica Neue", "Roboto", Arial, sans-serif !important;
-  color: #575756 !important;
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  /* keep the content narrow so it matches the screenshot spacing */
-  max-width: 1100px !important;
-  margin: 0 auto !important;
-  padding: 0 18px !important;
+/* === Wrapper / block base === */
+.contentsection.block {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
-/* === Heading: "USES" === */
-div.section.contentsection-container
-  > div.contentsection-wrapper
-  > div.contentsection.block
-  > div
-  > div
-  > [data-aue-prop="text"] h1,
-.contentsection.block [data-aue-prop="text"] h1 {
-  font-size: 32px !important;               /* matches screenshot scale */
-  line-height: 1 !important;
-  margin: 0 0 26px 0 !important;
-  color: #00a3df !important;                 /* bright blue from screenshot */
-  font-weight: 800 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.8px !important;
-  text-align: left !important;
+/* === Heading === */
+.contentsection.block h1 {
+  font-family: var(--font-univers-bold-condensed, "Helvetica Neue", Arial, sans-serif);
+  font-size: 32px;
+  font-weight: 800;
+  color: #00a3df;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 20px;
 }
 
-/* === Intro paragraph immediately under heading === */
-div.section.contentsection-container
-  > div.contentsection-wrapper
-  > div.contentsection.block
-  > div
-  > div
-  > [data-aue-prop="text"] > p:first-of-type,
-.contentsection.block [data-aue-prop="text"] > p:first-of-type {
-  font-size: 20px !important;               /* large, readable intro text */
-  font-weight: 300 !important;
-  line-height: 1.6 !important;
-  margin: 0 0 26px 0 !important;
-  color: #4f4f4f !important;
-  max-width: 980px !important;
+/* === Intro paragraph === */
+.contentsection.block > div > div > [data-aue-prop="text"] > p:first-of-type {
+  font-family: var(--font-univers-light, "Helvetica Neue", Arial, sans-serif);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #575756;
+  margin: 0 0 20px;
+  max-width: 980px;
 }
 
-/* === UL reset: remove browser default and control spacing === */
-div.section.contentsection-container
-  > div.contentsection-wrapper
-  > div.contentsection.block
-  > div
-  > div
-  > [data-aue-prop="text"] ul,
-.contentsection.block [data-aue-prop="text"] ul {
-  margin: 0 0 0 0 !important;
-  padding: 0 !important;
-  list-style: none !important;
+/* === List === */
+.contentsection.block ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* === LI: text size, wrap alignment, spacing to match screenshot === */
-div.section.contentsection-container
-  > div.contentsection-wrapper
-  > div.contentsection.block
-  > div
-  > div
-  > [data-aue-prop="text"] ul li,
-.contentsection.block [data-aue-prop="text"] ul li {
-  position: relative !important;
-  padding-left: 52px !important;            /* space for the large custom dot */
-  margin: 0 0 26px 0 !important;             /* tall gap between bullets */
-  font-size: 22px !important;                /* large bullet text like screenshot */
-  font-weight: 300 !important;
-  line-height: 1.8 !important;               /* airy spacing like image */
-  color: #575756 !important;
-  word-wrap: break-word !important;
-  max-width: 980px !important;
+.contentsection.block ul li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 18px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #575756;
+  max-width: 980px;
 }
 
-/* === Custom dot that visually matches the screenshot === */
-div.section.contentsection-container
-  > div.contentsection-wrapper
-  > div.contentsection.block
-  > div
-  > div
-  > [data-aue-prop="text"] ul li::before,
-.contentsection.block [data-aue-prop="text"] ul li::before {
-  content: '' !important;
-  display: block !important;
-  position: absolute !important;
-  left: 14px !important;                     /* dot distance from left */
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 12px !important;                    /* larger dot to match screenshot */
-  height: 12px !important;
-  border-radius: 50% !important;
-  background: #6b6b6b !important;            /* neutral gray */
+.contentsection.block ul li::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0.75em;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #575756;
+  border-radius: 50%;
 }
 
-/* === Links inside text/list === */
-div.section.contentsection-container
-  > div.contentsection-wrapper
-  > div.contentsection.block
-  > div
-  > div
-  > [data-aue-prop="text"] a,
-.contentsection.block [data-aue-prop="text"] a {
-  color: #8c1d40 !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-}
-div.section.contentsection-container
-  > div.contentsection-wrapper
-  > div.contentsection.block
-  > div
-  > div
-  > [data-aue-prop="text"] a:hover,
-.contentsection.block [data-aue-prop="text"] a:hover {
-  text-decoration: underline !important;
-}
-
-/* === Remove any stray margins from AEM wrapper divs that can push content off === */
-div.section.contentsection-container > div.contentsection-wrapper > div.contentsection.block > div,
-div.section.contentsection-container > div.contentsection-wrapper > div.contentsection.block > div > div {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* === Responsive: tighten up on small screens === */
+/* === Responsive === */
 @media (max-width: 991px) {
-  div.section.contentsection-container
-    > div.contentsection-wrapper
-    > div.contentsection.block
-    > div
-    > div
-    > [data-aue-prop="text"],
-  .contentsection.block [data-aue-prop="text"] {
-    padding: 0 12px !important;
-    max-width: 100% !important;
+  .contentsection.block {
+    padding: 20px 15px;
   }
 
-  div.section.contentsection-container
-    > div.contentsection-wrapper
-    > div.contentsection.block
-    > div
-    > div
-    > [data-aue-prop="text"] h1,
-  .contentsection.block [data-aue-prop="text"] h1 {
-    font-size: 22px !important;
-    margin-bottom: 14px !important;
+  .contentsection.block h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
   }
 
-  div.section.contentsection-container
-    > div.contentsection-wrapper
-    > div.contentsection.block
-    > div
-    > div
-    > [data-aue-prop="text"] > p:first-of-type,
-  .contentsection.block [data-aue-prop="text"] > p:first-of-type,
-  div.section.contentsection-container
-    > div.contentsection-wrapper
-    > div.contentsection.block
-    > div
-    > div
-    > [data-aue-prop="text"] ul li,
-  .contentsection.block [data-aue-prop="text"] ul li {
-    font-size: 16px !important;
-    padding-left: 34px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 16px !important;
-  }
-
-  div.section.contentsection-container
-    > div.contentsection-wrapper
-    > div.contentsection.block
-    > div
-    > div
-    > [data-aue-prop="text"] ul li::before,
-  .contentsection.block [data-aue-prop="text"] ul li::before {
-    width: 9px !important;
-    height: 9px !important;
-    left: 10px !important;
+  .contentsection.block > div > div > [data-aue-prop="text"] > p:first-of-type,
+  .contentsection.block ul li {
+    font-size: 16px;
+    padding-left: 28px;
   }
 }
-
-/* Optional debug outline — uncomment while testing to see the matched element */
-/*
-div.section.contentsection-container
-  > div.contentsection-wrapper
-  > div.contentsection.block
-  > div
-  > div
-  > [data-aue-prop="text"] {
-  outline: 3px dashed rgba(0,163,223,0.4) !important;
-}
-*/
