@@ -1,94 +1,59 @@
-/* === Section container === */
+/* ✅ Background for entire section */
 .section.contentsection-container {
   background: linear-gradient(to bottom, #ffffff 0%, #e8f5fd 100%) !important;
   padding: 60px 20px !important;
   box-sizing: border-box !important;
 }
 
-/* === Block wrapper === */
-.section.contentsection-container .contentsection.block {
-  max-width: 1000px !important;
+/* ✅ Target the richtext wrapper precisely */
+.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] {
+  max-width: 960px !important;
   margin: 0 auto !important;
-  box-sizing: border-box !important;
-}
-
-/* === Rich text container === */
-.section.contentsection-container .contentsection.block [data-aue-prop="text"] {
-  font-family: "Helvetica Neue", "Roboto", Arial, sans-serif !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   color: #575756 !important;
-  font-weight: 300 !important;
-  line-height: 1.6 !important;
-  text-align: left !important;
-  box-sizing: border-box !important;
 }
 
-/* === Heading === */
-.section.contentsection-container .contentsection.block [data-aue-prop="text"] h1 {
-  font-family: var(--font-univers-bold-condensed), "Helvetica Neue", Arial, sans-serif !important;
+/* ✅ Heading styles */
+.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] h1 {
+  font-family: var(--font-univers-bold-condensed, "Arial Black", sans-serif) !important;
   font-size: 40px !important;
   font-weight: 700 !important;
   color: #00a3df !important;
-  margin: 0 0 20px 0 !important;
-  line-height: 1.2 !important;
+  margin: 0 0 20px !important;
+  text-transform: uppercase !important;
 }
 
-/* === Paragraph === */
-.section.contentsection-container .contentsection.block [data-aue-prop="text"] > p {
+/* ✅ Paragraph styles */
+.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] p {
+  font-family: var(--font-univers-light, "Helvetica Neue", Helvetica, Arial, sans-serif) !important;
   font-size: 18px !important;
-  margin: 0 0 20px 0 !important;
-  max-width: 600px !important;
+  font-weight: 300 !important;
+  line-height: 1.6 !important;
+  margin: 0 0 20px !important;
 }
 
-/* === Unordered list === */
-.section.contentsection-container .contentsection.block [data-aue-prop="text"] ul {
+/* ✅ List styles */
+.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] ul {
   list-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-.section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li {
+.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] ul li {
   position: relative !important;
-  padding-left: 28px !important;
-  margin-bottom: 15px !important;
-  font-size: 18px !important;
+  padding-left: 24px !important;
+  margin-bottom: 12px !important;
+  font-size: 16px !important;
   line-height: 1.6 !important;
 }
 
-.section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li::before {
-  content: '' !important;
+.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] ul li::before {
+  content: "" !important;
   position: absolute !important;
   left: 0 !important;
-  top: 0.6em !important;
-  width: 10px !important;
-  height: 10px !important;
-  background-color: #6b6b6b !important;
+  top: 0.65em !important;
+  width: 6px !important;
+  height: 6px !important;
+  background: #575756 !important;
   border-radius: 50% !important;
-}
-
-/* === Links === */
-.section.contentsection-container .contentsection.block [data-aue-prop="text"] a {
-  color: #8c1d40 !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-}
-.section.contentsection-container .contentsection.block [data-aue-prop="text"] a:hover {
-  text-decoration: underline !important;
-}
-
-/* === Responsive === */
-@media (max-width: 991px) {
-  .section.contentsection-container {
-    padding: 30px 15px !important;
-  }
-  .section.contentsection-container .contentsection.block [data-aue-prop="text"] h1 {
-    font-size: 26px !important;
-    text-align: center !important;
-  }
-  .section.contentsection-container .contentsection.block [data-aue-prop="text"] {
-    text-align: center !important;
-  }
-  .section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li {
-    text-align: left !important;
-    padding-left: 24px !important;
-  }
 }
