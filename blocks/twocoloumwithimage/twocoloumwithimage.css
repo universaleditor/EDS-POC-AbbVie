@@ -9,7 +9,6 @@
 .section.twocoloumwithimage-container .twocoloumwithimage.block {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
-  gap: 40px !important;
   align-items: center !important;
   max-width: 1200px;
   margin: 0 auto !important;
@@ -68,14 +67,33 @@
 .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) {
   grid-column: 2 / 3;   /* place disclaimer under 2nd column */
   justify-self: start;  /* align text to left of that column */
+  margin-top: -10px;    /* reduce space above disclaimer */
 }
 
 .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p {
   font-size: 12px;
   color: #555;
-  margin-top: 20px;
   line-height: 1.5;
   max-width: 600px;
+}
+
+/* === Terms and Conditions link styling === */
+.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p a {
+  color: #0072ce;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+/* === Inserted logo before heading === */
+.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2)::before {
+  content: '';
+  display: block;
+  background-image: url('https://www.skyrizi.com/content/dam/skyriziivy/images/homepage/skyrizi-complete-logo_r25_desktop.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 40px;
+  margin-bottom: 20px;
 }
 
 /* === Responsive styles === */
@@ -97,5 +115,9 @@
 
   .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p {
     text-align: center !important;
+  }
+
+  .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2)::before {
+    margin: 0 auto 20px;
   }
 }
