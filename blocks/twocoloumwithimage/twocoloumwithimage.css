@@ -64,12 +64,18 @@
   background-color: #6a1530 !important;
 }
 
-/* === Disclaimer text (3rd div → align right) === */
+/* === Force disclaimer to align under right column === */
+.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) {
+  grid-column: 2 / 3;   /* place disclaimer under 2nd column */
+  justify-self: start;  /* align text to left of that column */
+}
+
 .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p {
-  font-size: 13px !important;
-  color: #555 !important;
-  text-align: right !important;
-  margin-top: 20px !important;
+  font-size: 12px;
+  color: #555;
+  margin-top: 20px;
+  line-height: 1.5;
+  max-width: 600px;
 }
 
 /* === Responsive styles === */
