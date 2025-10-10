@@ -1,4 +1,4 @@
 .section.contentsection-container .contentsection.block {
-background-color: pink;
+background-color: pink !important;
 
 }
