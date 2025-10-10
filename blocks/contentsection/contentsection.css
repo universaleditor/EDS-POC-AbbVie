@@ -37,3 +37,8 @@
   margin-bottom: 10px;
   line-height: 1.5;
 }
+/* Change bullet color */
+.section.contentsection-container .contentsection.block ul li::marker {
+  color: #4a4a4a; /* matches bullet color in image */
+  font-size: 1.5rem; /* makes bullets slightly larger like in the screenshot */
+}
