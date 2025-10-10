@@ -1,77 +1,77 @@
-/* === Section container background/padding === */
+/* === Section container === */
 .section.contentsection-container {
   background: linear-gradient(to bottom, #ffffff 0%, #e8f5fd 100%) !important;
   padding: 60px 20px !important;
   box-sizing: border-box !important;
 }
 
-/* === Block container === */
+/* === Block wrapper === */
 .section.contentsection-container .contentsection.block {
   max-width: 1000px !important;
   margin: 0 auto !important;
   box-sizing: border-box !important;
 }
 
-/* === Richtext wrapper (the important one) === */
-.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] {
-  font-family: "Helvetica Neue", Roboto, Arial, sans-serif !important;
+/* === Rich text container === */
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] {
+  font-family: "Helvetica Neue", "Roboto", Arial, sans-serif !important;
   color: #575756 !important;
-  max-width: 900px !important;
-  margin: 0 auto !important;
+  font-weight: 300 !important;
+  line-height: 1.6 !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
 }
 
 /* === Heading === */
-.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] h1 {
-  font-family: var(--font-univers-bold-condensed, "Arial Black", sans-serif) !important;
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] h1 {
+  font-family: var(--font-univers-bold-condensed), "Helvetica Neue", Arial, sans-serif !important;
   font-size: 40px !important;
   font-weight: 700 !important;
   color: #00a3df !important;
   margin: 0 0 20px 0 !important;
+  line-height: 1.2 !important;
 }
 
-/* === Paragraphs === */
-.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] p {
-  font-family: var(--font-univers-light, Roboto, Arial, sans-serif) !important;
+/* === Paragraph === */
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] > p {
   font-size: 18px !important;
-  line-height: 1.6 !important;
-  font-weight: 300 !important;
   margin: 0 0 20px 0 !important;
+  max-width: 600px !important;
 }
 
-/* === List === */
-.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] ul {
+/* === Unordered list === */
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] ul {
   list-style: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] ul li {
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li {
   position: relative !important;
   padding-left: 28px !important;
   margin-bottom: 15px !important;
   font-size: 18px !important;
   line-height: 1.6 !important;
-  font-weight: 300 !important;
 }
 
-.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] ul li::before {
-  content: "" !important;
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li::before {
+  content: '' !important;
   position: absolute !important;
   left: 0 !important;
   top: 0.6em !important;
-  width: 8px !important;
-  height: 8px !important;
-  background: #6b6b6b !important;
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #6b6b6b !important;
   border-radius: 50% !important;
 }
 
 /* === Links === */
-.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] a {
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] a {
   color: #8c1d40 !important;
   font-weight: 700 !important;
   text-decoration: none !important;
 }
-.section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] a:hover {
+.section.contentsection-container .contentsection.block [data-aue-prop="text"] a:hover {
   text-decoration: underline !important;
 }
 
@@ -80,11 +80,15 @@
   .section.contentsection-container {
     padding: 30px 15px !important;
   }
-
-  .section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] h1 {
+  .section.contentsection-container .contentsection.block [data-aue-prop="text"] h1 {
     font-size: 26px !important;
     text-align: center !important;
   }
-
-  .section.contentsection-container .contentsection.block > div > div > div[data-aue-prop="text"] p,
-  .section.contentsection-container .contentsection.block > div > div > div[data-aue]()
+  .section.contentsection-container .contentsection.block [data-aue-prop="text"] {
+    text-align: center !important;
+  }
+  .section.contentsection-container .contentsection.block [data-aue-prop="text"] ul li {
+    text-align: left !important;
+    padding-left: 24px !important;
+  }
+}
