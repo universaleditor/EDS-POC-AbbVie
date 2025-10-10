@@ -1,1 +1,90 @@
 
+.section.contentsection-container {
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%) !important;
+  padding: 60px 20px !important;
+  box-sizing: border-box;
+}
+
+.section.contentsection-container .contentsection.block {
+  display: block !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  box-sizing: border-box;
+  text-align: left !important;
+}
+
+/* === Heading (USES) === */
+.section.contentsection-container .contentsection.block h1 {
+  font-family: var(--font-univers-bold-condensed), Arial, Helvetica, sans-serif !important;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: #0096d6 !important; /* Matches the blue heading in the image */
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin: 0 0 25px !important;
+}
+
+/* === Intro paragraph === */
+.section.contentsection-container .contentsection.block p {
+  font-family: var(--font-univers-light), Roboto, Helvetica Neue, Helvetica, Arial, sans-serif, "abbv-iconFont" !important;
+  font-size: 18px !important;
+  font-weight: 300 !important;
+  color: #575756 !important;
+  line-height: 1.6 !important;
+  margin: 0 0 20px !important;
+  max-width: 800px !important;
+}
+
+/* === Bullet list styling === */
+.section.contentsection-container .contentsection.block ul {
+  list-style-type: disc !important;
+  padding-left: 22px !important;
+  margin: 0 !important;
+}
+
+.section.contentsection-container .contentsection.block ul li {
+  font-family: var(--font-univers-light), Roboto, Helvetica Neue, Helvetica, Arial, sans-serif, "abbv-iconFont" !important;
+  font-size: 18px !important;
+  font-weight: 300 !important;
+  color: #575756 !important;
+  line-height: 1.6 !important;
+  margin-bottom: 10px !important;
+  max-width: 800px !important;
+}
+
+/* === Optional anchor link styles inside text === */
+.section.contentsection-container .contentsection.block p a,
+.section.contentsection-container .contentsection.block ul li a {
+  color: #8c1d40 !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+}
+
+.section.contentsection-container .contentsection.block p a:hover,
+.section.contentsection-container .contentsection.block ul li a:hover {
+  text-decoration: underline !important;
+}
+
+/* === Responsive adjustments === */
+@media (max-width: 767px) {
+  .section.contentsection-container {
+    padding: 40px 15px !important;
+  }
+
+  .section.contentsection-container .contentsection.block h1 {
+    font-size: 22px !important;
+    text-align: center !important;
+    margin-bottom: 15px !important;
+  }
+
+  .section.contentsection-container .contentsection.block p,
+  .section.contentsection-container .contentsection.block ul li {
+    font-size: 16px !important;
+    text-align: left !important;
+  }
+
+  .section.contentsection-container .contentsection.block ul {
+    padding-left: 18px !important;
+  }
+}
+
