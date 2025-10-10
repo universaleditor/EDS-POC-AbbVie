@@ -1,9 +1,11 @@
+
 /* Target the specific section container and content block */
 .section.contentsection-container .contentsection.block {
+    
   max-width: 900px;
   margin: 0 auto;
   padding: 40px 20px;
-  background-color: #fff;
+  background-color: pink;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #444;
   line-height: 1.6;
