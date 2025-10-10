@@ -1,6 +1,4 @@
-.section.contentsection-container .contentsection.block {
-    background-color: yellow !important;
-}
+
 /* Target the specific section container and content block */
 .section.contentsection-container .contentsection.block {
   max-width: 900px;
@@ -8,7 +6,7 @@
   padding: 40px 20px;
   background-color: #fff;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #444;
+ 
   line-height: 1.6;
 }
 
