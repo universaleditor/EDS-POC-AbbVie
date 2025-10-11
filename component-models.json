@@ -5114,7 +5114,7 @@
         "name": "Eyebrow",
         "value": "",
         "label": "Eyebrow (display only)",
-        "valueType": "string",
+        "valueType": "string"
       }
     ]
   },
