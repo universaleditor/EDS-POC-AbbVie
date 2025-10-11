@@ -5108,14 +5108,12 @@
   },
   {
     "id": "nav-v1",
-    "title": "Nav v1",
     "fields": [
       {
         "id": "eyebrow",
-        "title": "Eyebrow (display only)",
-        "type": "text",
-        "default": "Hardcoded eyebrow",
-        "description": "Shown in EDS so the block appears; your JS can ignore this."
+        "label": "Eyebrow (display only)",
+        "type": "string",
+        "default": "Hardcoded eyebrow"
       }
     ]
   },
