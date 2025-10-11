@@ -5110,10 +5110,11 @@
     "id": "nav-v1",
     "fields": [
       {
-        "id": "eyebrow",
+        "component": "Eyebrow",
+        "name": "Eyebrow",
+        "value": "",
         "label": "Eyebrow (display only)",
-        "type": "string",
-        "default": "Hardcoded eyebrow"
+        "valueType": "string"
       }
     ]
   },
