@@ -5110,11 +5110,11 @@
     "id": "nav-v1",
     "fields": [
       {
-        "component": "Eyebrow",
+        "component": "richtext",
         "name": "Eyebrow",
         "value": "",
         "label": "Eyebrow (display only)",
-        "valueType": "string"
+        "valueType": "string",
       }
     ]
   },
