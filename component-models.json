@@ -5111,7 +5111,7 @@
     "fields": [
       {
         "component": "richtext",
-        "name": "Eyebrow",
+        "name": "eyebrow",
         "value": "",
         "label": "Eyebrow (display only)",
         "valueType": "string"

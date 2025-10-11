@@ -1,0 +1,18 @@
+{
+  "definitions": [],
+  "models": [
+    {
+      "id": "nav-v1",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "eyebrow",
+          "value": "",
+          "label": "Eyebrow (display only)",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}
