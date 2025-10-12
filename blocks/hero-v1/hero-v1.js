@@ -1,7 +1,10 @@
 // /blocks/hero-v1/hero-v1.js (diagnostic)
 export default function decorate(block) {
   // nuke anything UE injected so we control the DOM
-  block.textContent = '';
+  // Wait until data-* attributes exist → THEN wipe & build custom DOM
+  if (block.dataset.headline !== undefined) {
+    block.textContent = '';  // safe: model data already arrived
+  }
 
   // build a tiny, stable DOM (no 100vh, no grids, no background)
   const h = document.createElement('h2');

@@ -5129,7 +5129,13 @@
   {
     "id": "hero-v1",
     "fields": [
-      { "component": "text", "name": "headline", "label": "Headline", "valueType": "string", "value": "Hello from UE" }
+      {
+        "component": "text",
+        "name": "headline",
+        "label": "Headline",
+        "valueType": "string",
+        "value": "Hello from UE"
+      }
     ]
   },
   {
