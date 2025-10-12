@@ -1,23 +1,23 @@
 export default function decorate(block) {
   console.group('promo-text: decorate()');
 
-  // Log the initial state of the block (raw from author)
+  // Log the initial state of the block before we touch it
   console.log('Initial block DOM:', block);
   console.log('Initial innerHTML:', block.innerHTML);
 
-  // Clear any table/authoring markup
+  // Clear authoring placeholder markup (tables/p tags, etc)
   block.innerHTML = '';
   console.log('Block cleared, building structure…');
 
-  // Create wrapper
+  // Create wrapper div
   const root = document.createElement('div');
   root.className = 'promo-text';
 
-  // Create target element for UE bindings
+  // Create UE binding target for `text`
   const textEl = document.createElement('div');
   textEl.className = 'promo-text__content';
 
-  // Optional author inline editing hints (good practice)
+  // These attributes allow UE to bind the model field
   textEl.setAttribute('data-aue-prop', 'text');
   textEl.setAttribute('data-aue-type', 'richtext');
   textEl.setAttribute('data-aue-label', 'Text');
@@ -25,7 +25,10 @@ export default function decorate(block) {
   root.appendChild(textEl);
   block.appendChild(root);
 
-  // Log structure after JS runs
+  // Log final structure after decorate()
   console.log('Final block structure after JS:', block.outerHTML);
-  console.groupEnd();
-}
+
+  // Check after Universal Editor (UE) tries to bind values
+  setTimeout(() => {
+    console.log('🔥 AFTER UE binding (should contain authored text):', block.outerHTML);
+  }
