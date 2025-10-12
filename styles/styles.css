@@ -255,29 +255,3 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
-/* ============================== */
-/* HARD AUTHOR-ONLY OVERLAY PATCH */
-/* ============================== */
-html[data-aue-context] .hero-v1 {
-  position: relative;
-  overflow: hidden !important;
-}
-
-html[data-aue-context] button.overlay,
-html[data-aue-context] button.selected.overlay {
-  position: absolute !important;
-  inset: 0 auto auto 0 !important;
-  height: auto !important;
-  max-height: 100vh !important;
-  overflow: hidden !important;
-  pointer-events: none !important;  /* optional, prevents selection issues */
-  z-index: 9999 !important;         /* floats above content without stretching */
-}
-
-/* LOCK overlay to content box rather than block root */
-html[data-aue-context] .hero-v1 .hero-v1__btn,
-html[data-aue-context] .hero-v1 .hero-v1__headline,
-html[data-aue-context] .hero-v1 .hero-v1__subheadline,
-html[data-aue-context] .hero-v1 .hero-v1__body {
-  position: relative !important;
-}

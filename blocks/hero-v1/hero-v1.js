@@ -1,16 +1,37 @@
 // blocks/hero-v1/hero-v1.js
-// Fullscreen hero with BG + two centered columns (4 fixed buttons + text area)
-// All model fields are bound by UE to attributes on one hidden .hero-v1__data node.
-// We read dataset once and update text/href in place on attribute changes (no structure churn).
+// Single-block Hero: full-screen background + two columns (4 buttons + text).
+// UE binds ALL fields to a single hidden .hero-v1__data element (no per-field overlays).
 
-function qs(scope, sel) { return scope.querySelector(sel); }
+function refToUrl(val) {
+  if (!val) return '';
+  // If the value is a JSON string, parse it
+  if (typeof val === 'string' && val.trim().startsWith('{')) {
+    try {
+      const obj = JSON.parse(val);
+      const path = obj.path || obj.src || obj.url || obj.reference || '';
+      if (!path) return '';
+      return path.startsWith('http') ? path : `${location.origin}${path}`;
+    } catch {
+      // not JSON; treat as path
+    }
+  }
+  // Plain string path or absolute URL
+  if (typeof val === 'string') {
+    return val.startsWith('http') ? val : `${location.origin}${val}`;
+  }
+  // Object passed somehow
+  if (typeof val === 'object') {
+    const path = val.path || val.src || val.url || val.reference || '';
+    return path ? (path.startsWith('http') ? path : `${location.origin}${path}`) : '';
+  }
+  return '';
+}
 
 function ensureRoot(block) {
-  let root = qs(block, ':scope > .hero-v1');
+  let root = block.querySelector(':scope > .hero-v1');
   if (!root) {
     root = document.createElement('div');
     root.className = 'hero-v1';
-    // move any pasted authoring content into the root one time
     while (block.firstChild) root.appendChild(block.firstChild);
     block.appendChild(root);
   }
@@ -18,13 +39,12 @@ function ensureRoot(block) {
 }
 
 function ensureDataEl(root) {
-  let dataEl = qs(root, ':scope > .hero-v1__data');
+  let dataEl = root.querySelector(':scope > .hero-v1__data');
   if (!dataEl) {
     dataEl = document.createElement('div');
     dataEl.className = 'hero-v1__data';
     dataEl.hidden = true;
-    // ask UE not to overlay this node
-    dataEl.setAttribute('data-aue-filter', 'hidden');
+    dataEl.setAttribute('data-aue-filter', 'hidden'); // avoid overlay
     root.appendChild(dataEl);
   }
   return dataEl;
@@ -32,15 +52,14 @@ function ensureDataEl(root) {
 
 function ensureScaffold(root) {
   // background layer
-  let bg = qs(root, ':scope > .hero-v1__bg');
+  let bg = root.querySelector(':scope > .hero-v1__bg');
   if (!bg) {
     bg = document.createElement('div');
     bg.className = 'hero-v1__bg';
     root.appendChild(bg);
   }
-
-  // content structure
-  let content = qs(root, ':scope > .hero-v1__content');
+  // content
+  let content = root.querySelector(':scope > .hero-v1__content');
   if (!content) {
     content = document.createElement('div');
     content.className = 'hero-v1__content';
@@ -63,47 +82,44 @@ function ensureScaffold(root) {
       </div>`;
     root.appendChild(content);
   }
-
-  // cache refs (stable elements; we won't add/remove later)
   return {
     bg,
-    headline: qs(content, '.hero-v1__headline'),
-    subheadline: qs(content, '.hero-v1__subheadline'),
-    body: qs(content, '.hero-v1__body'),
+    content,
+    headline: content.querySelector('.hero-v1__headline'),
+    subheadline: content.querySelector('.hero-v1__subheadline'),
+    body: content.querySelector('.hero-v1__body'),
     btns: [
-      { a: qs(content, '.hero-v1__btn--1'), label: qs(content, '.hero-v1__btn--1 .hero-v1__btn-label') },
-      { a: qs(content, '.hero-v1__btn--2'), label: qs(content, '.hero-v1__btn--2 .hero-v1__btn-label') },
-      { a: qs(content, '.hero-v1__btn--3'), label: qs(content, '.hero-v1__btn--3 .hero-v1__btn-label') },
-      { a: qs(content, '.hero-v1__btn--4'), label: qs(content, '.hero-v1__btn--4 .hero-v1__btn-label') },
-    ],
+      { a: content.querySelector('.hero-v1__btn--1'), label: content.querySelector('.hero-v1__btn--1 .hero-v1__btn-label') },
+      { a: content.querySelector('.hero-v1__btn--2'), label: content.querySelector('.hero-v1__btn--2 .hero-v1__btn-label') },
+      { a: content.querySelector('.hero-v1__btn--3'), label: content.querySelector('.hero-v1__btn--3 .hero-v1__btn-label') },
+      { a: content.querySelector('.hero-v1__btn--4'), label: content.querySelector('.hero-v1__btn--4 .hero-v1__btn-label') }
+    ]
   };
 }
 
-function applyData(refs, ds) {
-  // BG image via CSS var (no transforms)
-  if (ds.bg) {
-    refs.bg.style.setProperty('--hero-v1-bg', `url("${ds.bg}")`);
-  }
+function applyData(refs, dataEl) {
+  const ds = dataEl.dataset;
+  // Background
+  const bgUrl = refToUrl(ds.bg);
+  if (bgUrl) refs.bg.style.setProperty('--hero-v1-bg', `url("${bgUrl}")`);
 
-  // text areas
+  // Text
   refs.headline.textContent    = ds.headline    || '';
   refs.subheadline.textContent = ds.subheadline || '';
   refs.body.innerHTML          = ds.body        || '';
 
-  // buttons: set href + label; DO NOT add/remove nodes; avoid hidden toggle
-  // keep layout stable: if empty label, put non-breaking space to preserve height
+  // Buttons (fixed 4)
   const labels = [ds.b1Label, ds.b2Label, ds.b3Label, ds.b4Label];
   const hrefs  = [ds.b1Href,  ds.b2Href,  ds.b3Href,  ds.b4Href ];
   refs.btns.forEach((ref, i) => {
-    const href = hrefs[i] || '#';
-    const labelText = (labels[i] && String(labels[i]).trim()) || '\u00A0';
+    const label = (labels[i] && String(labels[i]).trim()) || '\u00A0'; // keep height stable
+    const href  = hrefs[i] || '#';
+    ref.label.textContent = label;
     ref.a.setAttribute('href', href);
-    ref.label.textContent = labelText;
   });
 }
 
 export default function decorate(block) {
-  // init guard (no re-inits)
   if (block.dataset.heroV1Init === 'true') return;
   block.dataset.heroV1Init = 'true';
 
@@ -111,41 +127,28 @@ export default function decorate(block) {
   const dataEl = ensureDataEl(root);
   const refs   = ensureScaffold(root);
 
-  // initial render from current attributes (UE may set them async)
-  applyData(refs, dataEl.dataset);
+  // Initial paint
+  applyData(refs, dataEl);
 
-  // Debounced updates only when attributes on data node change.
-  // We DO NOT rebuild structure; we only update text/href in place.
-  let rafId = null;
-  const schedule = () => {
-    if (rafId) return;
-    rafId = requestAnimationFrame(() => {
-      rafId = null;
-      applyData(refs, dataEl.dataset);
-    });
-  };
-
-  const observedAttrs = [
+  // Observe only our attributes (no reflow loops)
+  const attrs = [
     'data-bg',
     'data-headline', 'data-subheadline', 'data-body',
     'data-b1-label', 'data-b1-href',
     'data-b2-label', 'data-b2-href',
     'data-b3-label', 'data-b3-href',
-    'data-b4-label', 'data-b4-href',
+    'data-b4-label', 'data-b4-href'
   ];
-
-  const mo = new MutationObserver((mutations) => {
-    // Only react to our attributes
-    if (mutations.some(m => m.type === 'attributes' && observedAttrs.includes(m.attributeName))) {
-      schedule();
-    }
+  let rafId = null;
+  const schedule = () => {
+    if (rafId) return;
+    rafId = requestAnimationFrame(() => {
+      rafId = null;
+      applyData(refs, dataEl);
+    });
+  };
+  const mo = new MutationObserver((muts) => {
+    if (muts.some(m => m.type === 'attributes' && attrs.includes(m.attributeName))) schedule();
   });
-  mo.observe(dataEl, { attributes: true, attributeFilter: observedAttrs });
-
-  // Clean stray empty wrappers (from pasted authoring), without touching hero
-  root.querySelectorAll(':scope > div:empty').forEach((n) => {
-    if (!n.classList.contains('hero-v1__bg') && !n.classList.contains('hero-v1__content') && !n.classList.contains('hero-v1__data')) {
-      n.remove();
-    }
-  });
+  mo.observe(dataEl, { attributes: true, attributeFilter: attrs });
 }

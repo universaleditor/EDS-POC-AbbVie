@@ -5129,7 +5129,13 @@
   {
     "id": "hero-v1",
     "fields": [
-      { "component": "reference",    "name": "background",   "label": "Background Image", "valueType": "string", "value": "" },
+      {
+        "component": "reference",
+        "name": "background",
+        "label": "Background Image",
+        "valueType": "string",
+        "value": ""
+      },
       { "component": "text",     "name": "headline",     "label": "Headline",         "valueType": "string", "value": "" },
       { "component": "text",     "name": "subheadline",  "label": "Subheadline",      "valueType": "string", "value": "" },
       { "component": "richtext", "name": "body",         "label": "Body (Rich Text)", "valueType": "string", "value": "" },
