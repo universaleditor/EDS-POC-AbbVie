@@ -5206,7 +5206,6 @@
     "id": "contentsection",
     "title": "contentsection",
     "fields": [
-      
       {
         "component": "richtext",
         "name": "text",
@@ -5220,7 +5219,25 @@
         "name": "jcr:title",
         "label": "Title"
       }
-
+    ]
+  },
+  {
+    "id": "contentsection1",
+    "title": "contentsection1",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "jcr:title",
+        "label": "Title"
+      }
     ]
   }
 ]
