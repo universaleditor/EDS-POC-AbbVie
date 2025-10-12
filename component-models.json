@@ -5119,6 +5119,18 @@
     ]
   },
   {
+    "id": "promo-text",
+    "fields": [
+      {
+        "component": "text",
+        "name": "text",
+        "label": "Text",
+        "valueType": "string",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "twocoloumwithimage",
     "title" :"twocoloumwithimage",
     "fields": [
