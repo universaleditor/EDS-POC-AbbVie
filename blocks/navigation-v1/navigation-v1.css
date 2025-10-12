@@ -94,3 +94,7 @@
 .block.navigation-v1 .navigation-v1__content[hidden] {
   display: none !important;
 }
+
+.nav-v1-section{
+  margin:0 !important;
+}

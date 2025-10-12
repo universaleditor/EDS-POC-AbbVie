@@ -144,6 +144,10 @@
           {
             "name": "Eyebrow Bar Section",
             "value": "eyebrow-bar-section"
+          },
+          {
+            "name": "Navigation v1 section",
+            "value": "nav-v1-section"
           }
         ]
       }
