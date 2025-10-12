@@ -1,37 +1,31 @@
 export default function decorate(block) {
   console.group('promo-text: decorate()');
 
-  // Log the initial state of the block before we touch it
-  console.log('Initial block DOM:', block);
-  console.log('Initial innerHTML:', block.innerHTML);
+  // 1Build a wrapper without destroying children
+  const wrapper = document.createElement('div');
+  wrapper.className = 'promo-text';
 
-  // Clear authoring placeholder markup (tables/p tags, etc)
-  block.innerHTML = '';
-  console.log('Block cleared, building structure…');
+  // Move existing children (including the UE target) into the wrapper
+  while (block.firstChild) wrapper.appendChild(block.firstChild);
+  block.appendChild(wrapper);
 
-  // Create wrapper div
-  const root = document.createElement('div');
-  root.className = 'promo-text';
+  // 2Find/normalize the UE target for the "text" field
+  let textEl = wrapper.querySelector('[data-aue-prop="text"]');
+  if (!textEl) {
+    // If authoring left nothing, create a target so UE can bind later
+    textEl = document.createElement('div');
+    textEl.setAttribute('data-aue-prop', 'text');
+    textEl.setAttribute('data-aue-type', 'richtext');
+    textEl.setAttribute('data-aue-label', 'Text');
+    wrapper.appendChild(textEl);
+  }
+  textEl.classList.add('promo-text__content');
 
-  // Create UE binding target for `text`
-  const textEl = document.createElement('div');
-  textEl.className = 'promo-text__content';
-
-  // These attributes allow UE to bind the model field
-  textEl.setAttribute('data-aue-prop', 'text');
-  textEl.setAttribute('data-aue-type', 'richtext');
-  textEl.setAttribute('data-aue-label', 'Text');
-
-  root.appendChild(textEl);
-  block.appendChild(root);
-
-  // Log final structure after decorate()
-  console.log('Final block structure after JS:', block.outerHTML);
-
-  // Check after Universal Editor (UE) tries to bind values
+  // 3Diagnostics
+  console.log('After decorate (before UE binding):', block.outerHTML);
   setTimeout(() => {
-    console.log('AFTER UE binding (should contain authored text):', block.outerHTML);
-  }, 1000);
+    console.log('After UE binding (should contain authored text):', block.outerHTML);
+  }, 800);
 
   console.groupEnd();
 }
