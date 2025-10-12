@@ -30,5 +30,8 @@ export default function decorate(block) {
 
   // Check after Universal Editor (UE) tries to bind values
   setTimeout(() => {
-    console.log('🔥 AFTER UE binding (should contain authored text):', block.outerHTML);
-  }
+    console.log('AFTER UE binding (should contain authored text):', block.outerHTML);
+  }, 1000);
+
+  console.groupEnd();
+}
