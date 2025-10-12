@@ -1,0 +1,22 @@
+.block.eyebrow-bar {
+  margin: 0; padding: 0;
+}
+
+.block.eyebrow-bar .eyebrow-bar {
+  background: #e9e3de;        /* soft beige/grey like the example */
+  color: #5a4a45;              /* muted dark text */
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  font-size: 14px;
+}
+
+.block.eyebrow-bar .eyebrow-bar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 16px;           /* thin top bar */
+  text-align: center;          /* center like the screenshot */
+}
+
+.block.eyebrow-bar .eyebrow-bar__message a {
+  text-decoration: underline;
+  font-weight: 600;
+}

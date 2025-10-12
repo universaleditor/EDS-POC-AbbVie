@@ -5131,6 +5131,18 @@
     ]
   },
   {
+    "id": "eyebrow-bar",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "message",
+        "label": "Eyebrow Message",
+        "valueType": "string",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "twocoloumwithimage",
     "title" :"twocoloumwithimage",
     "fields": [
