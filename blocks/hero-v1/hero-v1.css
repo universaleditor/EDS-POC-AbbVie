@@ -81,3 +81,30 @@ html[data-aue-context] .block.hero-v1 * { /* transform: none !important; */ }
 @media (max-width: 960px) {
   .block.hero-v1 .hero-v1__grid { grid-template-columns: 1fr; gap: 28px; }
 }
+
+/* ===== UE-only fixes (safe for authoring; not used on publish) ===== */
+
+/* 1) Neutralize transforms that confuse overlay geometry */
+html[data-aue-context] .block.hero-v1 .hero-v1,
+html[data-aue-context] .block.hero-v1 .hero-v1 * {
+  transform: none !important;
+}
+
+/* 2) Cap the overlay buttons so they can't inflate document height */
+html[data-aue-context] button.overlay,
+html[data-aue-context] button.selected.overlay {
+  height: auto !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+}
+
+/* 3) Make sure no fixed/viewport attachments sneak in */
+html[data-aue-context] .block.hero-v1 .hero-v1__bg {
+  background-attachment: scroll !important;
+}
+
+/* 4) Safety: prevent any author-time min-height accumulation */
+html[data-aue-context] .block.hero-v1 .hero-v1__content {
+  min-height: 0 !important;
+  height: auto !important;
+}
