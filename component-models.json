@@ -5127,6 +5127,27 @@
     ]
   },
   {
+    "id": "hero-v1",
+    "fields": [
+      { "component": "reference",    "name": "background",   "label": "Background Image", "valueType": "string", "value": "" },
+      { "component": "text",     "name": "headline",     "label": "Headline",         "valueType": "string", "value": "" },
+      { "component": "text",     "name": "subheadline",  "label": "Subheadline",      "valueType": "string", "value": "" },
+      { "component": "richtext", "name": "body",         "label": "Body (Rich Text)", "valueType": "string", "value": "" },
+
+      { "component": "text", "name": "button1Label", "label": "Button 1 Label", "valueType": "string", "value": "" },
+      { "component": "text", "name": "button1Href",  "label": "Button 1 URL",   "valueType": "string", "value": "" },
+
+      { "component": "text", "name": "button2Label", "label": "Button 2 Label", "valueType": "string", "value": "" },
+      { "component": "text", "name": "button2Href",  "label": "Button 2 URL",   "valueType": "string", "value": "" },
+
+      { "component": "text", "name": "button3Label", "label": "Button 3 Label", "valueType": "string", "value": "" },
+      { "component": "text", "name": "button3Href",  "label": "Button 3 URL",   "valueType": "string", "value": "" },
+
+      { "component": "text", "name": "button4Label", "label": "Button 4 Label", "valueType": "string", "value": "" },
+      { "component": "text", "name": "button4Href",  "label": "Button 4 URL",   "valueType": "string", "value": "" }
+    ]
+  },
+  {
     "id": "navigation-v1",
     "fields": [
       {
