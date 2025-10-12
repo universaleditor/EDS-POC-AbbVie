@@ -236,7 +236,7 @@
                   "name": "Primary Navigation",
                   "model": "primary-nav",
                   "elements": [
-                    { "name": "dataEl", "selector": ":scope script.site-nav__data" }
+                    { "name": "dataEl", "selector": ":scope script.primary-nav__data" }
                   ],
                   "bindings": [
                     {

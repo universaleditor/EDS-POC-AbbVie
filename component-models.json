@@ -5150,11 +5150,26 @@
     "id": "primary-nav",
     "fields": [
       {
-        "component": "richtext",
-        "name": "debug",
-        "label": "Debug",
-        "valueType": "string",
-        "value": ""
+        "component": "repeat",
+        "name": "items",
+        "label": "Navigation Items",
+        "fields": [
+          { "component": "text", "name": "label", "label": "Label", "valueType": "string", "value": "" },
+          { "component": "text", "name": "href",  "label": "Link URL", "valueType": "string", "value": "" },
+          { "component": "checkbox", "name": "newWindow", "label": "Open in new tab", "valueType": "boolean", "value": false },
+          {
+            "component": "repeat",
+            "name": "children",
+            "label": "Child Items (one level)",
+            "fields": [
+              { "component": "text", "name": "label", "label": "Child Label", "valueType": "string", "value": "" },
+              { "component": "text", "name": "href",  "label": "Child URL",   "valueType": "string", "value": "" },
+              { "component": "checkbox", "name": "newWindow", "label": "Open in new tab", "valueType": "boolean", "value": false }
+            ],
+            "value": []
+          }
+        ],
+        "value": []
       }
     ]
   },
