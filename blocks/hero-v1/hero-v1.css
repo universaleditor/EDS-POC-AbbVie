@@ -93,3 +93,6 @@ html[data-aue-context] .block.hero-v1 .hero-v1__body,
 html[data-aue-context] .block.hero-v1 .hero-v1__btn {
   position: relative; display: block;   /* stable, measurable boxes for UE */
 }
+/* Optional author-only guard */
+html[data-aue-context] .block.hero-v1 { overflow: clip !important; contain: layout paint style; }
+
