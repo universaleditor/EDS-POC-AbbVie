@@ -5123,6 +5123,18 @@
     ]
   },
   {
+    "id": "navigation-v1",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "menuHtml",
+        "label": "Navigation Menu",
+        "valueType": "string",
+        "value": "<p><a href='/a'>A</a></p>"
+      }
+    ]
+  },
+  {
     "id": "promo-text",
     "fields": [
       {
