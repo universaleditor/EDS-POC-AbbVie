@@ -1,35 +1,29 @@
-/* Block shell */
 .block.hero-v1 { margin: 0; padding: 0; }
 
-/* Fullscreen hero container */
 .block.hero-v1 .hero-v1 {
   position: relative;
-  min-height: 100vh;
+  min-height: 100vh;           /* only the OUTER gets vh */
   width: 100%;
   overflow: hidden;
 }
 
-/* Background image */
 .block.hero-v1 .hero-v1__bg {
   position: absolute; inset: 0;
   background: var(--hero-v1-bg, none) center/cover no-repeat;
-  transform: translateZ(0);
-  will-change: transform;
 }
-.block.hero-v1 .hero-v1__bg::after { /* subtle darken for text contrast */
+.block.hero-v1 .hero-v1__bg::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0) 70%);
+  background: linear-gradient(90deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,0) 70%);
 }
 
-/* Foreground content */
 .block.hero-v1 .hero-v1__content {
   position: relative; z-index: 2;
   display: grid; place-items: center;
-  min-height: 100vh;
+  /* REMOVE min-height here to avoid compounding vh */
   padding: 32px 20px;
+  height: 100%;                /* fill hero height without adding more */
 }
 
-/* 2-column grid centered */
 .block.hero-v1 .hero-v1__grid {
   width: min(1200px, 95%);
   display: grid;
@@ -38,13 +32,12 @@
   align-items: center;
 }
 
-/* Left panel (buttons) */
 .block.hero-v1 .hero-v1__panel {
-  background: rgba(10, 58, 104, 0.9);
+  background: rgba(10, 58, 104, .9);
   border-radius: 14px;
   padding: 24px 22px;
   color: #fff;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 24px rgba(0,0,0,.25);
 }
 .block.hero-v1 .hero-v1__panel-title {
   text-transform: uppercase;
@@ -60,20 +53,19 @@
   margin: 14px 0;
   padding: 14px 18px;
   border-radius: 10px;
-  background: #b43b64;      /* magenta */
+  background: #b43b64;
   color: #fff;
   text-decoration: none;
   font-weight: 700;
   text-align: center;
-  box-shadow: 0 3px 0 rgba(0,0,0,0.25) inset, 0 6px 16px rgba(0,0,0,0.25);
+  box-shadow: 0 3px 0 rgba(0,0,0,.25) inset, 0 6px 16px rgba(0,0,0,.25);
   transition: transform .06s ease, filter .2s ease;
 }
 .block.hero-v1 .hero-v1__btn:hover { filter: brightness(1.05); }
 .block.hero-v1 .hero-v1__btn:active { transform: translateY(1px); }
 
-/* Right column text */
 .block.hero-v1 .hero-v1__headline {
-  color: #ffffff;
+  color: #fff;
   font-size: clamp(28px, 4vw, 44px);
   line-height: 1.1;
   margin: 0 0 10px;
@@ -92,11 +84,9 @@
   max-width: 520px;
 }
 
-/* Responsive */
 @media (max-width: 960px) {
   .block.hero-v1 .hero-v1__grid {
     grid-template-columns: 1fr;
     gap: 28px;
-    text-align: left;
   }
 }
