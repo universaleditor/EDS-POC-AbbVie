@@ -158,51 +158,24 @@
           }
         },
         {
-          "id": "hero-v1",
-          "title": "Hero v1",
+          "id": "navigation-v1",
+          "title": "Navigation v1",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Hero v1",
-                  "model": "hero-v1",
+                  "name": "Navigation v1",
+                  "model": "navigation-v1",
                   "elements": [
-                    { "name": "bg",           "selector": ":scope .hero-v1__bg" },
-                    { "name": "headline",     "selector": ":scope .hero-v1__headline" },
-                    { "name": "subheadline",  "selector": ":scope .hero-v1__subheadline" },
-                    { "name": "body",         "selector": ":scope .hero-v1__body" },
-
-                    { "name": "btn1",         "selector": ":scope .hero-v1__btn--1" },
-                    { "name": "btn1Label",    "selector": ":scope .hero-v1__btn--1 > span" },
-
-                    { "name": "btn2",         "selector": ":scope .hero-v1__btn--2" },
-                    { "name": "btn2Label",    "selector": ":scope .hero-v1__btn--2 > span" },
-
-                    { "name": "btn3",         "selector": ":scope .hero-v1__btn--3" },
-                    { "name": "btn3Label",    "selector": ":scope .hero-v1__btn--3 > span" },
-
-                    { "name": "btn4",         "selector": ":scope .hero-v1__btn--4" },
-                    { "name": "btn4Label",    "selector": ":scope .hero-v1__btn--4 > span" }
+                    { "name": "content", "selector": ":scope .navigation-v1__content" }
                   ],
                   "bindings": [
-                    { "element": "bg",          "source": "fields[?(@.name=='background')].value | [0]", "target": "attributes.data-src" },
-
-                    { "element": "headline",    "source": "fields[?(@.name=='headline')].value | [0]",    "target": "textContent" },
-                    { "element": "subheadline", "source": "fields[?(@.name=='subheadline')].value | [0]", "target": "textContent" },
-                    { "element": "body",        "source": "fields[?(@.name=='body')].value | [0]",        "target": "innerHTML" },
-
-                    { "element": "btn1",      "source": "fields[?(@.name=='button1Href')].value | [0]",   "target": "attributes.href" },
-                    { "element": "btn1Label", "source": "fields[?(@.name=='button1Label')].value | [0]",  "target": "textContent" },
-
-                    { "element": "btn2",      "source": "fields[?(@.name=='button2Href')].value | [0]",   "target": "attributes.href" },
-                    { "element": "btn2Label", "source": "fields[?(@.name=='button2Label')].value | [0]",  "target": "textContent" },
-
-                    { "element": "btn3",      "source": "fields[?(@.name=='button3Href')].value | [0]",   "target": "attributes.href" },
-                    { "element": "btn3Label", "source": "fields[?(@.name=='button3Label')].value | [0]",  "target": "textContent" },
-
-                    { "element": "btn4",      "source": "fields[?(@.name=='button4Href')].value | [0]",   "target": "attributes.href" },
-                    { "element": "btn4Label", "source": "fields[?(@.name=='button4Label')].value | [0]",  "target": "textContent" }
+                    {
+                      "element": "content",
+                      "source": "fields[?(@.name=='menuHtml')].value | [0]",
+                      "target": "innerHTML"
+                    }
                   ]
                 }
               }
