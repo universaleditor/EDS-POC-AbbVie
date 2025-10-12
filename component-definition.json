@@ -242,7 +242,7 @@
                     {
                       "element": "dataEl",
                       "source": "fields[?(@.name=='items')].value | [0]",
-                      "target": "innerHTML"
+                      "target": "textContent"
                     }
                   ]
                 }
