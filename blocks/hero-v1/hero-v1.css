@@ -1,36 +1,3 @@
-/* Real hero (publish & author) */
-.block.hero-v1 .hero-v1 { position: relative; min-height: 100vh; width: 100%; overflow: hidden; isolation: isolate; }
-.block.hero-v1 .hero-v1__bg { position: absolute; inset: 0; background: var(--hero-v1-bg, none) center/cover no-repeat; }
-.block.hero-v1 .hero-v1__content { position: relative; z-index: 2; display: grid; place-items: center; padding: 32px 20px; min-height: 100vh; }
-.block.hero-v1 .hero-v1__grid { width: min(1200px, 95%); display: grid; grid-template-columns: 340px 1fr; gap: 40px; align-items: center; }
-/* ... your existing panel/buttons/headline/body styles ... */
-
-/* ---------- UE-only proxy targets (so overlays attach here, not to fullscreen layout) ---------- */
-html[data-aue-context] .block.hero-v1 { position: relative; }
-html[data-aue-context] .block.hero-v1 .hero-v1__aue {
-  position: absolute;
-  top: 12px; left: 12px;
-  display: grid;
-  grid-auto-rows: 26px;
-  gap: 6px;
-  width: 220px;
-  z-index: 5;                      /* above bg but below UE overlays */
-  pointer-events: none;            /* you click the UE overlay, not these spans */
-}
-html[data-aue-context] .block.hero-v1 .hero-v1__aue > span {
-  display: block;
-  width: 100%;
-  height: 24px;                    /* small, predictable box => stable overlay rect */
-  background: rgba(255,255,255,.6);
-  border: 1px dashed #bbb;
-  border-radius: 6px;
-}
-
-/* Prevent any transforms that confuse UE math */
-html[data-aue-context] .block.hero-v1 .hero-v1,
-html[data-aue-context] .block.hero-v1 .hero-v1 * {
-  transform: none !important;
-}
-
-/* Clip any overlay spill so document height can't grow */
-html[data-aue-context] .block.hero-v1 .hero-v1 { overflow: clip !important; }
+/* /blocks/hero-v1/hero-v1.css (diagnostic) */
+.block.hero-v1 { position: relative; }
+html[data-aue-context] .block.hero-v1 { contain: layout paint style; overflow: clip; }

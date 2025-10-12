@@ -159,7 +159,7 @@
         },
         {
           "id": "hero-v1",
-          "title": "Hero v1",
+          "title": "Hero v1 (diag)",
           "plugins": {
             "xwalk": {
               "page": {
@@ -168,33 +168,10 @@
                   "name": "Hero v1",
                   "model": "hero-v1",
                   "elements": [
-                    { "name": "root",     "selector": ":scope" },
-                    { "name": "headline", "selector": ":scope .hero-v1__aue .proxy-headline" },
-                    { "name": "sub",      "selector": ":scope .hero-v1__aue .proxy-subheadline" },
-                    { "name": "body",     "selector": ":scope .hero-v1__aue .proxy-body" },
-                    { "name": "btn1",     "selector": ":scope .hero-v1__aue .proxy-btn1" },
-                    { "name": "btn2",     "selector": ":scope .hero-v1__aue .proxy-btn2" },
-                    { "name": "btn3",     "selector": ":scope .hero-v1__aue .proxy-btn3" },
-                    { "name": "btn4",     "selector": ":scope .hero-v1__aue .proxy-btn4" }
+                    { "name": "root", "selector": ":scope" }
                   ],
                   "bindings": [
-                    { "element": "root", "source": "fields[?(@.name=='background')].value | [0]",  "target": "attributes.data-bg" },
-
-                    { "element": "root", "source": "fields[?(@.name=='headline')].value | [0]",     "target": "attributes.data-headline" },
-                    { "element": "root", "source": "fields[?(@.name=='subheadline')].value | [0]",  "target": "attributes.data-subheadline" },
-                    { "element": "root", "source": "fields[?(@.name=='body')].value | [0]",         "target": "attributes.data-body" },
-
-                    { "element": "root", "source": "fields[?(@.name=='button1Label')].value | [0]", "target": "attributes.data-b1-label" },
-                    { "element": "root", "source": "fields[?(@.name=='button1Href')].value | [0]",  "target": "attributes.data-b1-href"  },
-
-                    { "element": "root", "source": "fields[?(@.name=='button2Label')].value | [0]", "target": "attributes.data-b2-label" },
-                    { "element": "root", "source": "fields[?(@.name=='button2Href')].value | [0]",  "target": "attributes.data-b2-href"  },
-
-                    { "element": "root", "source": "fields[?(@.name=='button3Label')].value | [0]", "target": "attributes.data-b3-label" },
-                    { "element": "root", "source": "fields[?(@.name=='button3Href')].value | [0]",  "target": "attributes.data-b3-href"  },
-
-                    { "element": "root", "source": "fields[?(@.name=='button4Label')].value | [0]", "target": "attributes.data-b4-label" },
-                    { "element": "root", "source": "fields[?(@.name=='button4Href')].value | [0]",  "target": "attributes.data-b4-href"  }
+                    { "element": "root", "source": "fields[?(@.name=='headline')].value | [0]", "target": "attributes.data-headline" }
                   ]
                 }
               }
