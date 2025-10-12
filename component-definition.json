@@ -168,27 +168,40 @@
                   "name": "Hero v1",
                   "model": "hero-v1",
                   "elements": [
-                    { "name": "dataEl", "selector": ":scope .hero-v1__data" }
+                    { "name": "root",       "selector": ":scope" },
+                    { "name": "headlineEl", "selector": ":scope .hero-v1__headline" },
+                    { "name": "subEl",      "selector": ":scope .hero-v1__subheadline" },
+                    { "name": "bodyEl",     "selector": ":scope .hero-v1__body" },
+                    { "name": "btn1El",     "selector": ":scope .hero-v1__btn--1 .hero-v1__btn-label" },
+                    { "name": "btn2El",     "selector": ":scope .hero-v1__btn--2 .hero-v1__btn-label" },
+                    { "name": "btn3El",     "selector": ":scope .hero-v1__btn--3 .hero-v1__btn-label" },
+                    { "name": "btn4El",     "selector": ":scope .hero-v1__btn--4 .hero-v1__btn-label" }
                   ],
                   "bindings": [
-                    { "element": "dataEl", "source": "fields[?(@.name=='background')].value | [0]",  "target": "attributes.data-bg" },
-                    { "element": "dataEl", "source": "fields[?(@.name=='headline')].value | [0]",     "target": "attributes.data-headline" },
-                    { "element": "dataEl", "source": "fields[?(@.name=='subheadline')].value | [0]",  "target": "attributes.data-subheadline" },
-                    { "element": "dataEl", "source": "fields[?(@.name=='body')].value | [0]",         "target": "attributes.data-body" },
-                    { "element": "dataEl", "source": "fields[?(@.name=='button1Label')].value | [0]", "target": "attributes.data-b1-label" },
-                    { "element": "dataEl", "source": "fields[?(@.name=='button1Href')].value | [0]",  "target": "attributes.data-b1-href"  },
-                    { "element": "dataEl", "source": "fields[?(@.name=='button2Label')].value | [0]", "target": "attributes.data-b2-label" },
-                    { "element": "dataEl", "source": "fields[?(@.name=='button2Href')].value | [0]",  "target": "attributes.data-b2-href"  },
-                    { "element": "dataEl", "source": "fields[?(@.name=='button3Label')].value | [0]", "target": "attributes.data-b3-label" },
-                    { "element": "dataEl", "source": "fields[?(@.name=='button3Href')].value | [0]",  "target": "attributes.data-b3-href"  },
-                    { "element": "dataEl", "source": "fields[?(@.name=='button4Label')].value | [0]", "target": "attributes.data-b4-label" },
-                    { "element": "dataEl", "source": "fields[?(@.name=='button4Href')].value | [0]",  "target": "attributes.data-b4-href"  }
+                    { "element": "root", "source": "fields[?(@.name=='background')].value | [0]",  "target": "attributes.data-bg" },
+
+                    { "element": "root", "source": "fields[?(@.name=='headline')].value | [0]",     "target": "attributes.data-headline" },
+                    { "element": "root", "source": "fields[?(@.name=='subheadline')].value | [0]",  "target": "attributes.data-subheadline" },
+                    { "element": "root", "source": "fields[?(@.name=='body')].value | [0]",         "target": "attributes.data-body" },
+
+                    { "element": "root", "source": "fields[?(@.name=='button1Label')].value | [0]", "target": "attributes.data-b1-label" },
+                    { "element": "root", "source": "fields[?(@.name=='button1Href')].value | [0]",  "target": "attributes.data-b1-href"  },
+
+                    { "element": "root", "source": "fields[?(@.name=='button2Label')].value | [0]", "target": "attributes.data-b2-label" },
+                    { "element": "root", "source": "fields[?(@.name=='button2Href')].value | [0]",  "target": "attributes.data-b2-href"  },
+
+                    { "element": "root", "source": "fields[?(@.name=='button3Label')].value | [0]", "target": "attributes.data-b3-label" },
+                    { "element": "root", "source": "fields[?(@.name=='button3Href')].value | [0]",  "target": "attributes.data-b3-href"  },
+
+                    { "element": "root", "source": "fields[?(@.name=='button4Label')].value | [0]", "target": "attributes.data-b4-label" },
+                    { "element": "root", "source": "fields[?(@.name=='button4Href')].value | [0]",  "target": "attributes.data-b4-href"  }
                   ]
                 }
               }
             }
           }
         },
+
         {
           "title": "Nav v1",
           "id": "nav-v1",

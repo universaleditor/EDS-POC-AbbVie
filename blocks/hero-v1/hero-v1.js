@@ -1,18 +1,16 @@
 // blocks/hero-v1/hero-v1.js
-// Single Hero block: full-width/full-screen background + 2 columns (4 buttons + text).
-// UE binds ALL fields to attributes on one hidden .hero-v1__data node.
-// We clear the block content first so no authoring placeholders remain (prevents extra overlays).
+// Root-bound values + sub-elements visible in UE tree.
+// Author-safe: no transforms, stable heights, and UE-only contain/clipping.
 
 function refToUrl(val) {
   if (!val) return '';
   if (typeof val === 'string') {
-    // JSON string or plain path?
     if (val.trim().startsWith('{')) {
       try {
-        const obj = JSON.parse(val);
-        const p = obj.path || obj.src || obj.url || obj.reference || '';
+        const o = JSON.parse(val);
+        const p = o.path || o.src || o.url || o.reference || '';
         return p ? (p.startsWith('http') ? p : `${location.origin}${p}`) : '';
-      } catch { /* fall through */ }
+      } catch {/* ignore */}
     }
     return val.startsWith('http') ? val : `${location.origin}${val}`;
   }
@@ -23,15 +21,12 @@ function refToUrl(val) {
   return '';
 }
 
-function buildSkeleton() {
+function build(block) {
+  // wipe authoring placeholders so we don't get extra overlays
+  block.innerHTML = '';
+
   const root = document.createElement('div');
   root.className = 'hero-v1';
-
-  const dataEl = document.createElement('div');
-  dataEl.className = 'hero-v1__data';
-  dataEl.hidden = true;
-  dataEl.setAttribute('data-aue-filter', 'hidden'); // UE: no overlay
-  root.appendChild(dataEl);
 
   const bg = document.createElement('div');
   bg.className = 'hero-v1__bg';
@@ -58,12 +53,12 @@ function buildSkeleton() {
     </div>`;
   root.appendChild(content);
 
+  block.appendChild(root);
+
   return {
-    root,
-    dataEl,
     bg,
     headline: content.querySelector('.hero-v1__headline'),
-    subheadline: content.querySelector('.hero-v1__subheadline'),
+    sub: content.querySelector('.hero-v1__subheadline'),
     body: content.querySelector('.hero-v1__body'),
     btns: [
       { a: content.querySelector('.hero-v1__btn--1'), label: content.querySelector('.hero-v1__btn--1 .hero-v1__btn-label') },
@@ -74,21 +69,21 @@ function buildSkeleton() {
   };
 }
 
-function applyData(refs) {
-  const ds = refs.dataEl.dataset;
+function apply(block, refs) {
+  const ds = block.dataset;
 
-  // Background
+  // background (full width / full screen)
   const url = refToUrl(ds.bg);
   if (url) refs.bg.style.setProperty('--hero-v1-bg', `url("${url}")`);
 
-  // Text
-  refs.headline.textContent    = ds.headline    || '';
-  refs.subheadline.textContent = ds.subheadline || '';
-  refs.body.innerHTML          = ds.body        || '';
+  // text
+  refs.headline.textContent = ds.headline || '';
+  refs.sub.textContent      = ds.subheadline || '';
+  refs.body.innerHTML       = ds.body || '';
 
-  // Buttons: keep node structure stable (no hide/show); use nbsp when label empty
+  // buttons (keep height stable with nbsp)
   const labels = [ds.b1Label, ds.b2Label, ds.b3Label, ds.b4Label];
-  const hrefs  = [ds.b1Href,  ds.b2Href,  ds.b3Href,  ds.b4Href ];
+  const hrefs  = [ds.b1Href,  ds.b2Href,  ds.b3Href,  ds.b4Href];
   refs.btns.forEach((ref, i) => {
     ref.label.textContent = (labels[i] && String(labels[i]).trim()) || '\u00A0';
     ref.a.setAttribute('href', hrefs[i] || '#');
@@ -99,17 +94,10 @@ export default function decorate(block) {
   if (block.dataset.heroV1Init === 'true') return;
   block.dataset.heroV1Init = 'true';
 
-  // 🔥 CRITICAL: remove all existing children so no authoring placeholders survive
-  block.innerHTML = '';
+  const refs = build(block);
+  apply(block, refs);
 
-  // Build hero markup
-  const refs = buildSkeleton();
-  block.appendChild(refs.root);
-
-  // Initial paint
-  applyData(refs);
-
-  // Watch only our data attributes on the hidden node
+  // react to UE updates written to block.dataset
   const attrs = [
     'data-bg',
     'data-headline', 'data-subheadline', 'data-body',
@@ -118,20 +106,15 @@ export default function decorate(block) {
     'data-b3-label', 'data-b3-href',
     'data-b4-label', 'data-b4-href'
   ];
-  let rafId = null;
-  const schedule = () => {
-    if (rafId) return;
-    rafId = requestAnimationFrame(() => { rafId = null; applyData(refs); });
-  };
-  const mo = new MutationObserver((mutations) => {
-    if (mutations.some((m) => m.type === 'attributes' && attrs.includes(m.attributeName))) {
-      schedule();
-    }
-  });
-  mo.observe(refs.dataEl, { attributes: true, attributeFilter: attrs });
 
-  // AUTHOR-ONLY: small guard so UE overlays don't blow up
-  if (document.documentElement.hasAttribute('data-aue-context')) {
-    refs.root.style.contain = 'layout paint'; // isolate layout in author
-  }
+  let raf = null;
+  const schedule = () => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => { raf = null; apply(block, refs); });
+  };
+
+  const mo = new MutationObserver((muts) => {
+    if (muts.some(m => m.type === 'attributes' && attrs.includes(m.attributeName))) schedule();
+  });
+  mo.observe(block, { attributes: true, attributeFilter: attrs });
 }
