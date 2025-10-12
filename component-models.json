@@ -150,6 +150,25 @@
     ]
   },
   {
+    "id": "card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "primary-nav",
     "fields": [
       {
@@ -183,7 +202,7 @@
             {
               "component": "array",
               "name": "children",
-              "label": "Dropdown Items",
+              "label": "Child Items (one level)",
               "item": {
                 "component": "group",
                 "fields": [
@@ -215,25 +234,6 @@
           ]
         },
         "value": []
-      }
-    ]
-  },
-  {
-    "id": "card",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
       }
     ]
   },
