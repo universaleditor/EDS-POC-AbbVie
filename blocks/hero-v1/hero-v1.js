@@ -1,16 +1,46 @@
 // blocks/hero-v1/hero-v1.js
+// Fullscreen hero with BG + two centered columns (4 fixed buttons + text area)
+// All model fields are bound by UE to attributes on one hidden .hero-v1__data node.
+// We read dataset once and update text/href in place on attribute changes (no structure churn).
 
-function renderFromData(root, dataEl) {
-  const ds = dataEl.dataset;
+function qs(scope, sel) { return scope.querySelector(sel); }
 
-  // background
-  const bg = root.querySelector('.hero-v1__bg') || root.appendChild(Object.assign(
-    document.createElement('div'), { className: 'hero-v1__bg' }
-  ));
-  if (ds.bg) bg.style.setProperty('--hero-v1-bg', `url("${ds.bg}")`);
+function ensureRoot(block) {
+  let root = qs(block, ':scope > .hero-v1');
+  if (!root) {
+    root = document.createElement('div');
+    root.className = 'hero-v1';
+    // move any pasted authoring content into the root one time
+    while (block.firstChild) root.appendChild(block.firstChild);
+    block.appendChild(root);
+  }
+  return root;
+}
 
-  // content shell
-  let content = root.querySelector('.hero-v1__content');
+function ensureDataEl(root) {
+  let dataEl = qs(root, ':scope > .hero-v1__data');
+  if (!dataEl) {
+    dataEl = document.createElement('div');
+    dataEl.className = 'hero-v1__data';
+    dataEl.hidden = true;
+    // ask UE not to overlay this node
+    dataEl.setAttribute('data-aue-filter', 'hidden');
+    root.appendChild(dataEl);
+  }
+  return dataEl;
+}
+
+function ensureScaffold(root) {
+  // background layer
+  let bg = qs(root, ':scope > .hero-v1__bg');
+  if (!bg) {
+    bg = document.createElement('div');
+    bg.className = 'hero-v1__bg';
+    root.appendChild(bg);
+  }
+
+  // content structure
+  let content = qs(root, ':scope > .hero-v1__content');
   if (!content) {
     content = document.createElement('div');
     content.className = 'hero-v1__content';
@@ -34,57 +64,88 @@ function renderFromData(root, dataEl) {
     root.appendChild(content);
   }
 
-  // text bits
-  content.querySelector('.hero-v1__headline').textContent    = ds.headline    || '';
-  content.querySelector('.hero-v1__subheadline').textContent = ds.subheadline || '';
-  content.querySelector('.hero-v1__body').innerHTML          = ds.body        || '';
+  // cache refs (stable elements; we won't add/remove later)
+  return {
+    bg,
+    headline: qs(content, '.hero-v1__headline'),
+    subheadline: qs(content, '.hero-v1__subheadline'),
+    body: qs(content, '.hero-v1__body'),
+    btns: [
+      { a: qs(content, '.hero-v1__btn--1'), label: qs(content, '.hero-v1__btn--1 .hero-v1__btn-label') },
+      { a: qs(content, '.hero-v1__btn--2'), label: qs(content, '.hero-v1__btn--2 .hero-v1__btn-label') },
+      { a: qs(content, '.hero-v1__btn--3'), label: qs(content, '.hero-v1__btn--3 .hero-v1__btn-label') },
+      { a: qs(content, '.hero-v1__btn--4'), label: qs(content, '.hero-v1__btn--4 .hero-v1__btn-label') },
+    ],
+  };
+}
 
-  // buttons (fixed 4)
-  const btns = [
-    { sel: '.hero-v1__btn--1', l: ds.b1Label, h: ds.b1Href },
-    { sel: '.hero-v1__btn--2', l: ds.b2Label, h: ds.b2Href },
-    { sel: '.hero-v1__btn--3', l: ds.b3Label, h: ds.b3Href },
-    { sel: '.hero-v1__btn--4', l: ds.b4Label, h: ds.b4Href },
-  ];
-  btns.forEach(({ sel, l, h }) => {
-    const a = content.querySelector(sel);
-    if (a) {
-      a.href = h || '#';
-      const span = a.querySelector('.hero-v1__btn-label');
-      span.textContent = l || '';
-      a.toggleAttribute('hidden', !l); // hide if no label
-    }
+function applyData(refs, ds) {
+  // BG image via CSS var (no transforms)
+  if (ds.bg) {
+    refs.bg.style.setProperty('--hero-v1-bg', `url("${ds.bg}")`);
+  }
+
+  // text areas
+  refs.headline.textContent    = ds.headline    || '';
+  refs.subheadline.textContent = ds.subheadline || '';
+  refs.body.innerHTML          = ds.body        || '';
+
+  // buttons: set href + label; DO NOT add/remove nodes; avoid hidden toggle
+  // keep layout stable: if empty label, put non-breaking space to preserve height
+  const labels = [ds.b1Label, ds.b2Label, ds.b3Label, ds.b4Label];
+  const hrefs  = [ds.b1Href,  ds.b2Href,  ds.b3Href,  ds.b4Href ];
+  refs.btns.forEach((ref, i) => {
+    const href = hrefs[i] || '#';
+    const labelText = (labels[i] && String(labels[i]).trim()) || '\u00A0';
+    ref.a.setAttribute('href', href);
+    ref.label.textContent = labelText;
   });
 }
 
 export default function decorate(block) {
+  // init guard (no re-inits)
   if (block.dataset.heroV1Init === 'true') return;
   block.dataset.heroV1Init = 'true';
 
-  // root container (stable)
-  let root = block.querySelector(':scope > .hero-v1');
-  if (!root) {
-    root = document.createElement('div');
-    root.className = 'hero-v1';
-    while (block.firstChild) root.appendChild(block.firstChild);
-    block.appendChild(root);
-  }
+  const root   = ensureRoot(block);
+  const dataEl = ensureDataEl(root);
+  const refs   = ensureScaffold(root);
 
-  // single hidden data node for UE bindings
-  let dataEl = root.querySelector(':scope > .hero-v1__data');
-  if (!dataEl) {
-    dataEl = document.createElement('div');
-    dataEl.className = 'hero-v1__data';
-    dataEl.hidden = true;                   // keep it invisible
-    // hint UE not to show overlay for this node
-    dataEl.setAttribute('data-aue-filter', 'hidden');
-    root.appendChild(dataEl);
-  }
+  // initial render from current attributes (UE may set them async)
+  applyData(refs, dataEl.dataset);
 
-  // initial render
-  renderFromData(root, dataEl);
+  // Debounced updates only when attributes on data node change.
+  // We DO NOT rebuild structure; we only update text/href in place.
+  let rafId = null;
+  const schedule = () => {
+    if (rafId) return;
+    rafId = requestAnimationFrame(() => {
+      rafId = null;
+      applyData(refs, dataEl.dataset);
+    });
+  };
 
-  // re-render when UE updates bound attributes on the data node
-  const mo = new MutationObserver(() => renderFromData(root, dataEl));
-  mo.observe(dataEl, { attributes: true, subtree: false });
+  const observedAttrs = [
+    'data-bg',
+    'data-headline', 'data-subheadline', 'data-body',
+    'data-b1-label', 'data-b1-href',
+    'data-b2-label', 'data-b2-href',
+    'data-b3-label', 'data-b3-href',
+    'data-b4-label', 'data-b4-href',
+  ];
+
+  const mo = new MutationObserver((mutations) => {
+    // Only react to our attributes
+    if (mutations.some(m => m.type === 'attributes' && observedAttrs.includes(m.attributeName))) {
+      schedule();
+    }
+  });
+  mo.observe(dataEl, { attributes: true, attributeFilter: observedAttrs });
+
+  // Clean stray empty wrappers (from pasted authoring), without touching hero
+  root.querySelectorAll(':scope > div:empty').forEach((n) => {
+    if (!n.classList.contains('hero-v1__bg') && !n.classList.contains('hero-v1__content') && !n.classList.contains('hero-v1__data')) {
+      n.remove();
+    }
+  });
 }
