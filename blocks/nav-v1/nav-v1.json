@@ -21,7 +21,7 @@
       "id": "nav-v1",
       "fields": [
         {
-          "component": "richtext",
+          "component": "text",
           "name": "eyebrow",
           "value": "",
           "label": "Eyebrow (display only)",
