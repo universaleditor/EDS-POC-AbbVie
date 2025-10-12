@@ -140,6 +140,10 @@
           {
             "name": "twocoloumwithimage",
             "value": "twocoloumwithimage"
+          },
+          {
+            "name": "Eyebrow Bar Section",
+            "value": "eyebrow-bar-section"
           }
         ]
       }
