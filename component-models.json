@@ -150,6 +150,75 @@
     ]
   },
   {
+    "id": "primary-nav",
+    "fields": [
+      {
+        "component": "array",
+        "name": "items",
+        "label": "Navigation Items",
+        "item": {
+          "component": "group",
+          "fields": [
+            {
+              "component": "text",
+              "name": "label",
+              "label": "Label",
+              "valueType": "string",
+              "value": ""
+            },
+            {
+              "component": "text",
+              "name": "href",
+              "label": "Link URL",
+              "valueType": "string",
+              "value": ""
+            },
+            {
+              "component": "checkbox",
+              "name": "newWindow",
+              "label": "Open in new tab",
+              "valueType": "boolean",
+              "value": false
+            },
+            {
+              "component": "array",
+              "name": "children",
+              "label": "Dropdown Items",
+              "item": {
+                "component": "group",
+                "fields": [
+                  {
+                    "component": "text",
+                    "name": "label",
+                    "label": "Child Label",
+                    "valueType": "string",
+                    "value": ""
+                  },
+                  {
+                    "component": "text",
+                    "name": "href",
+                    "label": "Child URL",
+                    "valueType": "string",
+                    "value": ""
+                  },
+                  {
+                    "component": "checkbox",
+                    "name": "newWindow",
+                    "label": "Open in new tab",
+                    "valueType": "boolean",
+                    "value": false
+                  }
+                ]
+              },
+              "value": []
+            }
+          ]
+        },
+        "value": []
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
