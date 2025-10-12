@@ -23,10 +23,10 @@
 }
 
 .eyebrow-bar-wrapper{
-max-width: unset;
-padding:0;
+max-width: unset !important;
+padding:0 !important;
 }
 
-.section.eyebrow-bar-section{
-margin-bottom:0;
+.eyebrow-bar-section{
+margin-bottom:0 !important;
 }
