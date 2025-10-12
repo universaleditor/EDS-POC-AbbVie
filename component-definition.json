@@ -181,7 +181,20 @@
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Promo Text",
-                  "model": "promo-text"
+                  "model": "promo-text",
+                  "elements": [
+                    {
+                      "name": "textEl",
+                      "selector": ":scope .promo-text__content"
+                    }
+                  ],
+                  "bindings": [
+                    {
+                      "element": "textEl",
+                      "source": "fields[?(@.name=='text')].value | [0]",
+                      "target": "innerHTML"
+                    }
+                  ]
                 }
               }
             }
