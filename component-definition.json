@@ -168,41 +168,26 @@
                   "name": "Hero v1",
                   "model": "hero-v1",
                   "elements": [
-                    { "name": "bg",           "selector": ":scope .hero-v1__bg" },
-                    { "name": "headline",     "selector": ":scope .hero-v1__headline" },
-                    { "name": "subheadline",  "selector": ":scope .hero-v1__subheadline" },
-                    { "name": "body",         "selector": ":scope .hero-v1__body" },
-
-                    { "name": "btn1",         "selector": ":scope .hero-v1__btn--1" },
-                    { "name": "btn1Label",    "selector": ":scope .hero-v1__btn--1 > span" },
-
-                    { "name": "btn2",         "selector": ":scope .hero-v1__btn--2" },
-                    { "name": "btn2Label",    "selector": ":scope .hero-v1__btn--2 > span" },
-
-                    { "name": "btn3",         "selector": ":scope .hero-v1__btn--3" },
-                    { "name": "btn3Label",    "selector": ":scope .hero-v1__btn--3 > span" },
-
-                    { "name": "btn4",         "selector": ":scope .hero-v1__btn--4" },
-                    { "name": "btn4Label",    "selector": ":scope .hero-v1__btn--4 > span" }
+                    { "name": "dataEl", "selector": ":scope .hero-v1__data" }
                   ],
                   "bindings": [
-                    { "element": "bg",          "source": "fields[?(@.name=='background')].value | [0]", "target": "attributes.data-src" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='background')].value | [0]",  "target": "attributes.data-bg" },
 
-                    { "element": "headline",    "source": "fields[?(@.name=='headline')].value | [0]",    "target": "textContent" },
-                    { "element": "subheadline", "source": "fields[?(@.name=='subheadline')].value | [0]", "target": "textContent" },
-                    { "element": "body",        "source": "fields[?(@.name=='body')].value | [0]",        "target": "innerHTML" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='headline')].value | [0]",     "target": "attributes.data-headline" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='subheadline')].value | [0]",  "target": "attributes.data-subheadline" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='body')].value | [0]",         "target": "attributes.data-body" },
 
-                    { "element": "btn1",      "source": "fields[?(@.name=='button1Href')].value | [0]",   "target": "attributes.href" },
-                    { "element": "btn1Label", "source": "fields[?(@.name=='button1Label')].value | [0]",  "target": "textContent" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='button1Label')].value | [0]", "target": "attributes.data-b1-label" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='button1Href')].value | [0]",  "target": "attributes.data-b1-href"  },
 
-                    { "element": "btn2",      "source": "fields[?(@.name=='button2Href')].value | [0]",   "target": "attributes.href" },
-                    { "element": "btn2Label", "source": "fields[?(@.name=='button2Label')].value | [0]",  "target": "textContent" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='button2Label')].value | [0]", "target": "attributes.data-b2-label" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='button2Href')].value | [0]",  "target": "attributes.data-b2-href"  },
 
-                    { "element": "btn3",      "source": "fields[?(@.name=='button3Href')].value | [0]",   "target": "attributes.href" },
-                    { "element": "btn3Label", "source": "fields[?(@.name=='button3Label')].value | [0]",  "target": "textContent" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='button3Label')].value | [0]", "target": "attributes.data-b3-label" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='button3Href')].value | [0]",  "target": "attributes.data-b3-href"  },
 
-                    { "element": "btn4",      "source": "fields[?(@.name=='button4Href')].value | [0]",   "target": "attributes.href" },
-                    { "element": "btn4Label", "source": "fields[?(@.name=='button4Label')].value | [0]",  "target": "textContent" }
+                    { "element": "dataEl", "source": "fields[?(@.name=='button4Label')].value | [0]", "target": "attributes.data-b4-label" },
+                    { "element": "dataEl", "source": "fields[?(@.name=='button4Href')].value | [0]",  "target": "attributes.data-b4-href"  }
                   ]
                 }
               }
