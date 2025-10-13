@@ -5165,7 +5165,7 @@
       { "component": "text",      "name": "cta3_href",    "label": "CTA Link3",  "valueType": "string" },
 
       { "component": "text",      "name": "cta4_label",   "label": "CTA Label4", "valueType": "string" },
-      { "component": "text",      "name": "cta4_href",    "label": "CTA Link4",  "valueType": "string" },
+      { "component": "text",      "name": "cta4_href",    "label": "CTA Link4",  "valueType": "string" }
 
     ]
   },
