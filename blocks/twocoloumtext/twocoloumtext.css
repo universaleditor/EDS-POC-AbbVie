@@ -1,4 +1,4 @@
-/* Container */
+/* === Container === */
 .section.twocoloumtext-container {
   display: flex;
   flex-wrap: wrap;
@@ -6,70 +6,75 @@
   align-items: stretch;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 50px 20px;
   box-sizing: border-box;
 }
 
-/* Each Column */
+/* === Each Column === */
 .twocoloumtext-wrapper {
   flex: 1 1 50%;
-  padding: 0 40px;
+  padding: 0 50px;
   box-sizing: border-box;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;   /* align text block to top */
+  justify-content: flex-start;
 }
 
-/* Add vertical divider between the two columns */
 .twocoloumtext-wrapper:first-child {
-  border-right: 1px solid #ccc;
+  border-right: 1px solid #d8d8d8; /* light grey divider */
 }
 
-/* Text styles inside block */
+/* === Content inside column === */
+.twocoloumtext {
+  max-width: 100%;
+}
+
 .twocoloumtext h2 {
-  color: #00AEEF; /* bright blue headline */
-  font-size: 2rem;
+  color: #00AEEF;
+  font-size: 2.25rem;           /* slightly larger for visual impact */
   font-weight: 700;
-  margin-bottom: 16px;
-  line-height: 1.2;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  text-align: left;
 }
 
 .twocoloumtext p {
   color: #4a4a4a;
   font-size: 1.125rem;
-  line-height: 1.5;
-  margin-bottom: 24px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  text-align: left;
 }
 
-/* Button styles */
+/* === Button Styles === */
 .twocoloumtext a {
   display: inline-block;
-  background-color: #8C1D58; /* Magenta */
+  background-color: #8C1D58;
   color: #fff;
   font-weight: 700;
   font-size: 1rem;
-  padding: 14px 24px;
+  padding: 14px 28px;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  text-align: center;
   transition: background-color 0.2s ease;
 }
 
 .twocoloumtext a:hover {
-  background-color: #6e1445; /* darker magenta on hover */
+  background-color: #6e1445;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* === Responsive === */
+@media (max-width: 992px) {
   .section.twocoloumtext-container {
-    flex-direction: column;
-    padding: 20px;
+    padding: 30px 15px;
   }
 
   .twocoloumtext-wrapper {
     flex: 1 1 100%;
+    padding: 25px 0;
     border-right: none;
-    border-bottom: 1px solid #ccc;
-    padding: 20px 0;
+    border-bottom: 1px solid #d8d8d8;
   }
 
   .twocoloumtext-wrapper:last-child {
@@ -77,10 +82,16 @@
   }
 
   .twocoloumtext h2 {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 
   .twocoloumtext p {
     font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  .twocoloumtext a {
+    padding: 12px 20px;
+    font-size: 0.95rem;
   }
 }
