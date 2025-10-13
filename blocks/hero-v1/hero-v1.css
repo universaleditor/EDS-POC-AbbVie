@@ -4,7 +4,7 @@
   width:100vw;
   position: relative;
   isolation: isolate;
-  height: 650px
+  height: 650px;
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -25,10 +25,10 @@
 .hero-v1__inner {
   position: relative;
   z-index: 1;
-  width: min(1280px, 96vw);
+  width: min(1000px, 96vw);
   display: grid;
-  grid-template-columns: minmax(300px, 420px) 1fr;
-  gap: clamp(20px, 3.5vw, 56px);
+  grid-template-columns: minmax(300px, 300px) 1fr;
+  gap: 0;
   align-items: center;
   padding: clamp(16px, 2vw, 28px);
 }
@@ -43,16 +43,20 @@
   padding-right: 45px;
   padding-left: 45px;
   height: 80%;
-  width: 65%;
+  width: 60%;
 }
 .hero-v1__card-title {
-  margin: 0 0 clamp(12px, 1.4vw, 18px);
+  margin: 30px;
   color: #ffffff;
   font-weight: 800;
   letter-spacing: .04em;
   text-transform: uppercase;
   text-align: center;
 }
+.hero-v1__title h1{
+    line-height:0.2;
+}
+
 .hero-v1__cta-list { display: grid; gap: 1.25rem; }
 
 .hero-v1__cta a:hover{
