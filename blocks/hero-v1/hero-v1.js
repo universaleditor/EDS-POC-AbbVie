@@ -1,87 +1,76 @@
-// /blocks/hero/hero.js
+// Build a hero-v1 layout from the plain rows Universal Editor outputs.
 export default function decorate(block) {
-  // 1) Grab authored bits from UE/AEM
+  // grab authored bits
   const picture = block.querySelector('picture');
-  const img = picture?.querySelector('img');
+  const titleEl = block.querySelector('[data-aue-prop="title"]');
+  const bodyEl  = block.querySelector('[data-aue-prop="body"]');
 
-  const titleEl =
-    block.querySelector('[data-aue-prop="title"]') ||
-    block.querySelector('h1, h2, h3, .title');
-
-  const bodyEl =
-    block.querySelector('[data-aue-prop="body"]') ||
-    block.querySelector('.body');
-
-  // Collect CTA label/link pairs: cta1..cta4
-  const labelNodes = [...block.querySelectorAll('[data-aue-prop$="_label"]')];
-
-  const ctas = labelNodes.map((labelP) => {
-    const label = labelP.textContent?.trim();
-    if (!label) return null;
-
-    // find link next to the label within same CTA "row"
-    const row = labelP.closest('div');
-    const linkA =
-      row?.querySelector('a') ||
-      labelP.parentElement?.querySelector('a') ||
-      labelP.nextElementSibling?.querySelector?.('a');
-
-    const href = linkA?.getAttribute('href') || linkA?.textContent?.trim();
-    if (!href) return null;
-
-    const a = document.createElement('a');
-    a.className = 'btn btn--cta';
-    a.textContent = label;
-    a.href = href;
-    a.target = '_self'; // change to '_blank' if you want new tab
-    a.rel = 'noopener';
-    return a;
+  // collect CTAs: each row has <p data-aue-prop="ctaX_label"> + a.button
+  const labelPs = [...block.querySelectorAll('[data-aue-prop$="_label"]')];
+  const ctas = labelPs.map((p) => {
+    const label = p.textContent?.trim();
+    // find link in same row
+    const row = p.closest('div');
+    const a = row?.querySelector('a');
+    const href = a?.getAttribute('href') || a?.textContent?.trim();
+    if (!label || !href) return null;
+    return { label, href };
   }).filter(Boolean);
 
-  // 2) Build layout
+  // build new structure (hero-v1 only — no reliance on .hero)
+  const root = document.createElement('div');
+  root.className = 'hero-v1';
+
+  const bg = document.createElement('div');
+  bg.className = 'hero-v1__bg';
+  if (picture) bg.append(picture);
+
   const inner = document.createElement('div');
-  inner.className = 'hero-inner';
+  inner.className = 'hero-v1__inner';
 
   const left = document.createElement('div');
-  left.className = 'hero-left';
+  left.className = 'hero-v1__left';
 
-  const ctaList = document.createElement('div');
-  ctaList.className = 'hero-cta-list';
-  ctas.forEach((a) => {
-    const item = document.createElement('div');
-    item.className = 'hero-cta';
-    item.append(a);
-    ctaList.append(item);
-  });
-  if (ctaList.childElementCount) left.append(ctaList);
+  if (ctas.length) {
+    const list = document.createElement('div');
+    list.className = 'hero-v1__cta-list';
+    ctas.forEach(({ label, href }) => {
+      const item = document.createElement('div');
+      item.className = 'hero-v1__cta';
+      const btn = document.createElement('a');
+      btn.className = 'hero-v1__btn';
+      btn.textContent = label;
+      btn.href = href;
+      btn.target = '_self'; // change to '_blank' if you want new tab
+      btn.rel = 'noopener';
+      item.append(btn);
+      list.append(item);
+    });
+    left.append(list);
+  }
 
   const right = document.createElement('div');
-  right.className = 'hero-right';
+  right.className = 'hero-v1__right';
+
   if (titleEl) {
-    titleEl.classList.add('hero-title');
+    titleEl.classList.add('hero-v1__title');
     right.append(titleEl);
   }
   if (bodyEl) {
-    bodyEl.classList.add('hero-body');
+    bodyEl.classList.add('hero-v1__body');
     right.append(bodyEl);
   }
 
   inner.append(left, right);
+  root.append(bg, inner);
 
-  // 3) Reassemble with background layer
+  // replace original content with our structure
   block.textContent = '';
-  const bg = document.createElement('div');
-  bg.className = 'hero-bg';
-  if (picture) {
-    bg.append(picture);
-  } else if (img?.src) {
-    block.style.setProperty('--hero-bg', `url("${img.src}")`);
-  }
-  block.append(bg, inner);
+  block.append(root);
 
-  // 4) Accessibility
-  if (titleEl && !block.getAttribute('aria-label')) {
-    const label = titleEl.textContent?.trim();
-    if (label) block.setAttribute('aria-label', label);
+  // aria label from title
+  const titleText = titleEl?.textContent?.trim();
+  if (titleText && !block.getAttribute('aria-label')) {
+    block.setAttribute('aria-label', titleText);
   }
 }
