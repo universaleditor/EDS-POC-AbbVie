@@ -1,7 +1,7 @@
 /* === Footer Container Background & Layout === */
 .section.threecoloumfooter-container {
   background: linear-gradient(to bottom, #00AEEF 0%, #005B96 100%);
-  padding: 50px 20px;
+      padding: 50px 110px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -75,3 +75,4 @@
     font-size: 0.95rem;
   }
 }
+
