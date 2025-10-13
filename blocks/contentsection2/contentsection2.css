@@ -41,17 +41,15 @@
   line-height: 1.5;
 }
 
-/* Bullet symbol and its color */
 .section.contentsection2-container .contentsection2.block ul > li::before {
   content: "•";
-  color: #009cde;    /* bullet color per your requirement */
+  color: #009cde;
   font-size: 22px;
   position: absolute;
   left: -18px;
   top: -2px;
 }
 
-/* Nested symptom list as 3 columns */
 .section.contentsection2-container .contentsection2.block ul ul {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -61,27 +59,21 @@
   padding-left: 0;
 }
 
-/* Symptom item styling */
 .section.contentsection2-container .contentsection2.block ul ul li {
   font-size: 15px;
-  color: #009cde;
+  color: #4a4a4a;
   line-height: 1.4;
   margin: 0;
+  position: relative;
+  padding-left: 12px;
+  text-indent: -0.8em;
 }
 
-/* Handle <br> inside nested list items */
-.section.contentsection2-container .contentsection2.block ul ul li br {
-  line-height: 1.3;
-}
-
-/* Bold text inside paragraphs */
-.section.contentsection2-container .contentsection2.block p strong {
-  font-weight: 700;
-  color: #4a4a4a;
-}
-
-/* Spacing immediately after headings */
-.section.contentsection2-container .contentsection2.block h4 + p,
-.section.contentsection2-container .contentsection2.block h4 + ul {
-  margin-top: 6px;
+.section.contentsection2-container .contentsection2.block ul ul li::before {
+  content: "-";
+  color: #009cde;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 15px;
 }
