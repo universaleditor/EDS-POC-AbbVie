@@ -1,136 +1,86 @@
-/* === Section container with gradient background === */
-.section.twocoloumwithimage-container {
-  background: linear-gradient(to bottom, #ffffff 0%, #e8f5fd 100%) !important;
-  padding-top: 60px !important;
+/* Container */
+.section.twocoloumtext-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
   box-sizing: border-box;
 }
 
-/* === Block grid layout === */
-.section.twocoloumwithimage-container .twocoloumwithimage.block {
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  align-items: center !important;
-  max-width: 1000px;
-  margin: 0 auto !important;
+/* Each Column */
+.twocoloumtext-wrapper {
+  flex: 1 1 50%;
+  padding: 0 40px;
   box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* === Left image column === */
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:first-child img {
-  width: 100% !important;
-  max-width: 420px !important;
-  height: auto !important;
-  display: block !important;
-  margin: 0 auto !important;
+/* Add vertical divider between the two columns */
+.twocoloumtext-wrapper:first-child {
+  border-right: 1px solid #ccc;
 }
 
-/* === Title (h1) === */
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2) h1 {
-  font-family: var(--font-univers-bold-condensed) !important;
-  font-size: 40px !important;
-  font-weight: 700 !important;
-  color: #00a3df !important;
-  margin: 0 0 20px !important;
-  max-width: 500px !important;
+/* Text styles inside block */
+.twocoloumtext h2 {
+  color: #00AEEF; /* bright blue headline */
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
 }
 
-/* === Paragraphs === */
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2) p {
-  font-family: var(--font-univers-ligth), Roboto, Helvetica Neue, Helvetica, Arial, sans-serif, "abbv-iconFont" !important;
-  line-height: 1.6 !important;
-  font-weight: 300 !important;
-  color: #575756 !important;
-  margin: 0 0 20px !important;
-  max-width: 600px !important;
+.twocoloumtext p {
+  color: #4a4a4a;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
 }
 
-/* === CTA Button === */
-.section.twocoloumwithimage-container .twocoloumwithimage.block .button-container a.button {
-  display: inline-block !important;
-  background-color: #8c1d40 !important;
-  color: #fff !important;
-  padding: 14px 28px !important;
-  border-radius: 4px !important;
-  text-decoration: none !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  transition: background 0.3s ease !important;
+/* Button styles */
+.twocoloumtext a {
+  display: inline-block;
+  background-color: #8C1D58; /* Magenta */
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 24px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
 }
 
-.section.twocoloumwithimage-container .twocoloumwithimage.block .button-container a.button:hover {
-  background-color: #6a1530 !important;
+.twocoloumtext a:hover {
+  background-color: #6e1445; /* darker magenta on hover */
 }
 
-/* === Force disclaimer to align under right column === */
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) {
-  grid-column: 2 / 3;
-  justify-self: start;
-  margin-top: -10px;
-}
-
-/* === Disclaimer paragraph styling === */
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p {
-  font-size: 12px !important;
-  color: #555 !important;
-  line-height: 1.5 !important;
-  max-width: 600px !important;
-  margin: 0 !important;
-}
-
-/* === Terms and Conditions link styling === */
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p a,
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2) p a {
-  color: #8c1d40 !important;
-  font-weight: 700 !important;
-  text-decoration: none !important;
-}
-
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p a:hover,
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2) p a:hover
- {
-  text-decoration: underline !important;
-}
-
-/* === Inserted logo before heading === */
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2)::before {
-  content: '';
-  display: block;
-  background-image: url('https://www.skyrizi.com/content/dam/skyriziivy/images/homepage/skyrizi-complete-logo_r25_desktop.svg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 300px;
-  height: 40px;
-  margin-bottom: 20px;
-}
-
-/* === Remove margin below image column to close the gap === */
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:first-child {
-  margin-bottom: 0 !important;
-}
-
-/* === Responsive styles === */
-@media (max-width: 991px) {
-  .section.twocoloumwithimage-container .twocoloumwithimage.block {
-    grid-template-columns: 1fr !important;
-    text-align: center !important;
+/* Responsive */
+@media (max-width: 768px) {
+  .section.twocoloumtext-container {
+    flex-direction: column;
+    padding: 20px;
   }
 
-  .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2) h1 {
-    font-size: 26px !important;
-    margin: 20px auto !important;
+  .twocoloumtext-wrapper {
+    flex: 1 1 100%;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
   }
 
-  .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2) p {
-    font-size: 16px !important;
-    margin: 0 auto 20px !important;
+  .twocoloumtext-wrapper:last-child {
+    border-bottom: none;
   }
 
-  .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p {
-    text-align: center !important;
-    margin: 10px auto 0 !important;
+  .twocoloumtext h2 {
+    font-size: 1.5rem;
   }
 
-  .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2)::before {
-    margin: 0 auto 20px !important;
+  .twocoloumtext p {
+    font-size: 1rem;
   }
 }
