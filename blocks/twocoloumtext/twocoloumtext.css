@@ -7,9 +7,6 @@
   margin: 0 auto;
   padding: 50px 20px;
   box-sizing: border-box;
-  justify-content: space-between;
-  gap: 2rem; /* spacing between columns */
-
 }
 
 .twocoloumtext-wrapper {
