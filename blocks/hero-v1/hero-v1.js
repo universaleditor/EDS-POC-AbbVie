@@ -1,22 +1,26 @@
 // /blocks/hero-v1/hero-v1.js
 export default function decorate(block) {
-  // --- collect authored bits from UE/AEM ---
+  // --- collect authored bits ---
   const picture = block.querySelector('picture') || null;
   const titleEl = block.querySelector('[data-aue-prop="title"]') || null;
   const bodyEl  = block.querySelector('[data-aue-prop="body"]')  || null;
 
-  // cta rows look like: <p data-aue-prop="ctaX_label">...</p> + nearby <a>
+  // Optional: authorable panel heading if you add a field later
+  const panelTitleEl = block.querySelector('[data-aue-prop="panelTitle"]');
+  const panelTitle = panelTitleEl?.textContent?.trim() || 'CHOOSE YOUR CONDITION';
+
+  // CTAs come as: <p data-aue-prop="ctaX_label">...</p> + sibling <a>
   const labelPs = [...block.querySelectorAll('[data-aue-prop$="_label"]')];
   const ctas = labelPs.map((p) => {
     const label = (p.textContent || '').trim();
     const row = p.closest('div');
     const a = row?.querySelector('a');
-    const href = a?.getAttribute('href') || (a?.textContent || '').trim();
-    if (!label || !href || href === '#') return null;
+    const href = a?.getAttribute('href') || (a?.textContent || '').trim() || '#';
+    if (!label) return null; // render even if href is '#'
     return { label, href };
   }).filter(Boolean);
 
-  // --- build our own structure (no reliance on default .hero) ---
+  // --- build our own structure ---
   const root  = document.createElement('div');
   root.className = 'hero-v1';
 
@@ -27,9 +31,17 @@ export default function decorate(block) {
   const inner = document.createElement('div');
   inner.className = 'hero-v1__inner';
 
-  // LEFT: stacked CTA cards
+  // LEFT PANEL (SKYRIZI-style card with heading + stacked CTAs)
   const left = document.createElement('div');
   left.className = 'hero-v1__left';
+
+  const card = document.createElement('div');
+  card.className = 'hero-v1__card';
+
+  const heading = document.createElement('p');
+  heading.className = 'hero-v1__card-title';
+  heading.textContent = panelTitle;
+  card.append(heading);
 
   if (ctas.length) {
     const list = document.createElement('div');
@@ -41,28 +53,29 @@ export default function decorate(block) {
       btn.className = 'hero-v1__btn';
       btn.textContent = label;
       btn.href = href;
-      btn.target = '_self'; // change to '_blank' if you want new tab
+      btn.target = '_self'; // change to '_blank' if required
       btn.rel = 'noopener';
       item.append(btn);
       list.append(item);
     });
-    left.append(list);
+    card.append(list);
   }
+  left.append(card);
 
-  // RIGHT: title + body (richtext)
+  // RIGHT SIDE (title + body)
   const right = document.createElement('div');
   right.className = 'hero-v1__right';
   if (titleEl) { titleEl.classList.add('hero-v1__title'); right.append(titleEl); }
-  if (bodyEl)  { bodyEl.classList.add('hero-v1__body');   right.append(bodyEl); }
+  if (bodyEl)  { bodyEl.classList.add('hero-v1__body');  right.append(bodyEl); }
 
   inner.append(left, right);
   root.append(bg, inner);
 
-  // replace original rows with our layout
+  // swap original rows
   block.textContent = '';
   block.append(root);
 
-  // accessibility: label with title text if available
+  // aria label from title
   const t = titleEl?.textContent?.trim();
   if (t && !block.getAttribute('aria-label')) block.setAttribute('aria-label', t);
 }

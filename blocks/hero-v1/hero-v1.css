@@ -1,15 +1,15 @@
-/* everything scoped to .hero-v1 */
+/* Scope: hero-v1 only — SKYRIZI look */
 
 .hero-v1 {
   position: relative;
   isolation: isolate;
-  min-height: clamp(520px, 70vh, 860px);
+  min-height: clamp(560px, 72vh, 900px);
   overflow: hidden;
   display: grid;
   place-items: center;
 }
 
-/* background via <picture> */
+/* Background via <picture> behaves like full-bleed bg */
 .hero-v1__bg,
 .hero-v1__bg picture,
 .hero-v1__bg img {
@@ -20,52 +20,75 @@
 }
 .hero-v1__bg img { object-fit: cover; }
 
-/* layout */
+/* Two-column layout centered */
 .hero-v1__inner {
   position: relative;
   z-index: 1;
-  width: min(1200px, 94vw);
+  width: min(1280px, 96vw);
   display: grid;
-  grid-template-columns: minmax(280px, 420px) 1fr;
-  gap: clamp(16px, 3vw, 40px);
+  grid-template-columns: minmax(300px, 420px) 1fr;
+  gap: clamp(20px, 3.5vw, 56px);
   align-items: center;
-  padding: clamp(12px, 2vw, 24px);
+  padding: clamp(16px, 2vw, 28px);
 }
 
-/* left panel (CTA card stack) */
-.hero-v1__left {
-  background: color-mix(in oklab, #0b2a4d 60%, transparent);
+/* LEFT: glassy blue panel with stacked CTAs */
+.hero-v1__left { display: grid; justify-items: stretch; }
+.hero-v1__card {
+  background: color-mix(in oklab, #0b3a68 62%, transparent);
   backdrop-filter: blur(4px);
-  border-radius: 18px;
-  padding: clamp(16px, 2.4vw, 28px);
-  box-shadow: 0 8px 28px rgba(0,0,0,.18);
+  border-radius: 22px;
+  padding: clamp(18px, 2.4vw, 28px);
+  box-shadow: 0 8px 30px rgba(0,0,0,.22);
+}
+.hero-v1__card-title {
+  margin: 0 0 clamp(12px, 1.4vw, 18px);
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  text-align: center;
 }
 .hero-v1__cta-list { display: grid; gap: clamp(12px, 2vw, 18px); }
+
+/* SKYRIZI-style pill buttons */
 .hero-v1__btn {
   display: block;
   width: 100%;
-  text-align: left;
+  text-align: center;
   padding: clamp(14px, 1.8vw, 18px) clamp(16px, 2vw, 22px);
-  border-radius: 12px;
+  border-radius: 14px;
   font-weight: 800;
   line-height: 1.1;
   text-decoration: none;
   border: 0;
-  background: var(--hero-v1-cta-bg, #8c2b61);
-  color: var(--hero-v1-cta-fg, #fff);
+  background: #8c2b61;            /* magenta */
+  color: #ffffff;
   box-shadow: 0 6px 16px rgba(0,0,0,.18);
-  transition: transform .1s ease, box-shadow .2s ease;
+  transition: transform .1s ease, box-shadow .2s ease, opacity .2s ease;
 }
-.hero-v1__btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.22); }
+.hero-v1__btn:hover   { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.24); }
+.hero-v1__btn:active  { transform: translateY(0); }
+.hero-v1__btn[href="#"] { cursor: default; } /* optional: non-link look */
 
-/* right column (richtext) */
-.hero-v1__right { color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,.35); }
-.hero-v1__title { margin: 0 0 .5rem; font-size: clamp(28px, 5vw, 56px); line-height: 1.05; font-weight: 800; }
-.hero-v1__body  { margin: .25rem 0 0; font-size: clamp(16px, 2.2vw, 20px); max-width: 50ch; }
+/* RIGHT: large white headline + smaller copy */
+.hero-v1__right { color: #fff; text-shadow: 0 2px 14px rgba(0,0,0,.35); }
+.hero-v1__title {
+  margin: 0 0 .5rem;
+  font-size: clamp(32px, 5.2vw, 58px);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: .01em;
+}
+.hero-v1__body {
+  margin: .25rem 0 0;
+  font-size: clamp(16px, 2.1vw, 20px);
+  max-width: 48ch;
+}
 
-/* responsive */
-@media (max-width: 840px) {
-  .hero-v1__inner { grid-template-columns: 1fr; gap: 16px; }
+/* Mobile: stack with CTAs first */
+@media (max-width: 960px) {
+  .hero-v1__inner { grid-template-columns: 1fr; gap: 18px; }
   .hero-v1__right { order: 2; }
   .hero-v1__left  { order: 1; }
 }
