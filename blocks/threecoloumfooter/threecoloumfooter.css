@@ -68,7 +68,7 @@
 }
 
 /* === Privacy Icon === */
-.threecoloumfooter-wrapper li:last-child a::after {
+/*.threecoloumfooter-wrapper li:last-child a::after {
   content: "";
   display: inline-block;
   width: 18px;
@@ -76,7 +76,7 @@
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zM12 20c-4.42-1.17-7-5.57-7-9.34V6.3l7-3.11 7 3.11v4.36C19 14.43 16.42 18.83 12 20z"/></svg>') no-repeat center;
   background-size: contain;
   margin-left: 6px;
-}
+}*/
 
 /* === Responsive === */
 @media (max-width: 992px) {
