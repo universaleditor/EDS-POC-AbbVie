@@ -5147,6 +5147,41 @@
       }
     ]
   },
+    {
+      "id": "hero-v1",
+      "fields": [
+        { "component": "reference", "name": "image", "label": "Background Image", "valueType": "string" },
+        { "component": "text",      "name": "imageAlt", "label": "Image Alt", "valueType": "string" },
+
+        { "component": "text",      "name": "eyebrow", "label": "Eyebrow", "valueType": "string" },
+        { "component": "text",      "name": "title",   "label": "Title",   "valueType": "string", "required": true },
+        { "component": "richtext",  "name": "body",    "label": "Body" },
+
+        { "component": "text",      "name": "cta1_label",   "label": "Primary CTA Label", "valueType": "string" },
+        { "component": "text",      "name": "cta1_href",    "label": "Primary CTA Link",  "valueType": "string" },
+        {
+          "component": "select",    "name": "cta1_variant", "label": "Primary CTA Style", "valueType": "string",
+          "options": [
+            { "name": "Primary",   "value": "primary" },
+            { "name": "Secondary", "value": "secondary" },
+            { "name": "Link",      "value": "link" }
+          ],
+          "value": "primary"
+        },
+
+        { "component": "text",      "name": "cta2_label",   "label": "Secondary CTA Label", "valueType": "string" },
+        { "component": "text",      "name": "cta2_href",    "label": "Secondary CTA Link",  "valueType": "string" },
+        {
+          "component": "select",    "name": "cta2_variant", "label": "Secondary CTA Style", "valueType": "string",
+          "options": [
+            { "name": "Primary",   "value": "primary" },
+            { "name": "Secondary", "value": "secondary" },
+            { "name": "Link",      "value": "link" }
+          ],
+          "value": "secondary"
+        }
+      ]
+    },
   {
     "id": "promo-text",
     "fields": [
