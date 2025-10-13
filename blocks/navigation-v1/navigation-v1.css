@@ -59,7 +59,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: calc(100% + 8px);
+  top: calc(100% + -5px);
   background: #ffffff;
   border: 1px solid rgba(0,0,0,0.12);
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
@@ -99,8 +99,13 @@
 }
 
 .navigation-v1 ul li{
+    color:#0076af;
     font-size:12px;
     /* tentative fix with negative vals */
     margin-top: -5px;
     margin-bottom: -5px;
+}
+
+.navigation-v1 ul li:hover{
+    color: #00aedf;
 }
