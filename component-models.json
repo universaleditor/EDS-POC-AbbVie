@@ -148,9 +148,14 @@
           {
             "name": "Navigation v1 section",
             "value": "nav-v1-section"
+          },
+          {
+            "name": "twocoloumtext",
+            "value": "twocoloumtext"
           }
         ]
       }
+      
     ]
   },
   {
@@ -5215,6 +5220,25 @@
             "value": "secondary"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "twocoloumtext",
+    "title": "twocoloumtext",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "jcr:title",
+        "label": "Title"
       }
     ]
   },
