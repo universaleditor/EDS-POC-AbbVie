@@ -16,54 +16,57 @@
   padding: 0 50px;
   box-sizing: border-box;
   display: flex;
-  align-items: flex-start;   /* align text block to top */
+  align-items: flex-start;
   justify-content: flex-start;
 }
 
 .twocoloumtext-wrapper:first-child {
-  border-right: 1px solid #d8d8d8; /* light grey divider */
+  border-right: 1px solid #d8d8d8;
 }
 
-/* === Content inside column === */
+/* === Text Content === */
 .twocoloumtext {
   max-width: 100%;
-    margin-left: 3rem;
-    margin-bottom: 3rem;
+  margin-left: 3rem;
+  margin-bottom: 3rem;
 }
 
 .twocoloumtext h2 {
   color: #00AEEF;
-  font-size: 3rem;          
+  font-size: 3rem;
   font-weight: 700;
   line-height: 1.1;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   text-align: left;
 }
 
 .twocoloumtext p {
   color: #4a4a4a;
-          font-size: 1.2rem;
-  line-height: 0.2;
-  margin-bottom: 28px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 32px;
   text-align: left;
+  max-width: 90%;
 }
 
 /* === Button Styles === */
 .twocoloumtext a {
   display: inline-block;
-  background-color: #8C1D58;
+  background: linear-gradient(90deg, #2D6EF5 0%, #3A7CFF 100%);
   color: #fff;
   font-weight: 700;
   font-size: 1rem;
   padding: 14px 28px;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 50px; /* pill shape */
   text-align: center;
-  transition: background-color 0.2s ease;
+  transition: background 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
 .twocoloumtext a:hover {
-  background-color: #6e1445;
+  background: linear-gradient(90deg, #1f5fe0 0%, #2f6eff 100%);
+  transform: translateY(-2px);
 }
 
 /* === Responsive === */
@@ -83,17 +86,23 @@
     border-bottom: none;
   }
 
+  .twocoloumtext {
+    margin-left: 0;
+    margin-bottom: 2rem;
+  }
+
   .twocoloumtext h2 {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .twocoloumtext p {
     font-size: 1rem;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    max-width: 100%;
   }
 
   .twocoloumtext a {
-    padding: 12px 20px;
+    padding: 12px 24px;
     font-size: 0.95rem;
   }
 }
