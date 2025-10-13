@@ -16,6 +16,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  margin: 0 !important;
 }
 
 .twocoloumtext-wrapper:first-child {
@@ -25,12 +26,14 @@
 .twocoloumtext {
   max-width: 100%;
   margin-left: 3rem;
+  padding-right: 2rem;
   
 }
 
 .twocoloumtext h2 {
-  color: #00aeef;
+  color: #00a3df;
   font-size: 2.3rem;
+  font-family: Univers LT W01_67 Bold_1476016;
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 12px;
@@ -38,7 +41,7 @@
 }
 
 .twocoloumtext p {
-  color: #4a4a4a;
+  color: #575756;
   font-size: 1.2rem;
   line-height: 1.2 !important;
   margin-bottom: 28px;
