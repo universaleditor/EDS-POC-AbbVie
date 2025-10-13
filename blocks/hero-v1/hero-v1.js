@@ -4,21 +4,51 @@ export default function decorate(block) {
   const picture = block.querySelector('picture');
   const img = picture?.querySelector('img');
 
-  // find content bits regardless of exact row/col
-  const eyebrow = block.querySelector('p, .eyebrow');
-  const title = block.querySelector('h1, h2, h3');
-  // body = first rich text chunk after title (fallback: any <p> not used as eyebrow)
-  let body;
-  const paras = [...block.querySelectorAll('p, ul, ol, div')];
-  for (const el of paras) {
-    if (el === eyebrow) continue;
-    if (title && title.contains(el)) continue;
-    if (!body && (el.matches('p, ul, ol') || el.querySelector('p, ul, ol'))) {
-      body = el;
+  // Prefer explicit bindings, then sensible fallbacks
+  const titleEl =
+    block.querySelector('[data-aue-prop="title"]') ||
+    block.querySelector('h1, h2, h3, .title');
+
+  // Body is rich text; keep whatever UE rendered
+  let bodyEl =
+    block.querySelector('[data-aue-prop="body"]') ||
+    block.querySelector('.body');
+
+  if (!bodyEl) {
+    // Fallback: the first rich-ish chunk that isn't the title
+    const candidates = [...block.querySelectorAll('div, p, ul, ol')];
+    for (const el of candidates) {
+      if (titleEl && (el === titleEl || titleEl.contains(el))) continue;
+      bodyEl = el;
       break;
     }
   }
-  const links = [...block.querySelectorAll('a')];
+
+  // Helper: build CTA from label/href fields (cta1..cta4)
+  const buildCTA = (n) => {
+    const labelEl = block.querySelector(`[data-aue-prop="cta${n}_label"]`);
+    const hrefEl  = block.querySelector(`[data-aue-prop="cta${n}_href"]`);
+    const label = labelEl?.textContent?.trim();
+    // href can come as text or attribute (if authoring rendered an <a>)
+    const href =
+      hrefEl?.getAttribute?.('href') ||
+      hrefEl?.textContent?.trim();
+
+    if (label && href) {
+      const a = document.createElement('a');
+      a.className = 'btn';
+      a.textContent = label;
+      a.href = href;
+      // change to '_blank' if you prefer new tab:
+      a.target = '_self';
+      a.rel = 'noopener';
+      return a;
+    }
+    return null;
+  };
+
+  // Also capture any anchors UE may have already rendered
+  const authoredLinks = [...block.querySelectorAll('a')];
 
   // 2) Build overlay structure
   const wrapper = document.createElement('div');
@@ -26,30 +56,37 @@ export default function decorate(block) {
 
   const card = document.createElement('div');
   card.className = 'hero-card';
-  if (eyebrow) {
-    eyebrow.classList.add('eyebrow');
-    card.append(eyebrow);
+
+  if (titleEl) {
+    titleEl.classList.add('title');
+    card.append(titleEl);
   }
-  if (title) {
-    title.classList.add('title');
-    card.append(title);
-  }
-  if (body) {
-    body.classList.add('body');
-    card.append(body);
+  if (bodyEl) {
+    bodyEl.classList.add('body');
+    card.append(bodyEl);
   }
 
+  // CTAs area
   const cta = document.createElement('div');
   cta.className = 'cta';
-  // move up to two CTAs (the model provides up to 2)
-  links.slice(0, 2).forEach((a, i) => {
-    a.classList.add('btn');
-    if (i === 0) a.classList.add('primary');
-    if (i === 1) a.classList.add('secondary');
-    cta.append(a);
-  });
-  if (cta.childElementCount) card.append(cta);
 
+  // Prefer model fields cta1..cta4
+  [1, 2, 3, 4].forEach((n) => {
+    const btn = buildCTA(n);
+    if (btn) cta.append(btn);
+  });
+
+  // If none built from fields, fall back to any existing anchors in the block
+  if (!cta.childElementCount && authoredLinks.length) {
+    authoredLinks.forEach((a) => {
+      // avoid moving links that are inside body/title we already appended
+      if (card.contains(a)) return;
+      a.classList.add('btn');
+      cta.append(a);
+    });
+  }
+
+  if (cta.childElementCount) card.append(cta);
   wrapper.append(card);
 
   // 3) Clean & reassemble
@@ -63,8 +100,11 @@ export default function decorate(block) {
   }
   block.append(bg, wrapper);
 
-  // 4) Small accessibility improvement
-  if (title && !block.getAttribute('aria-label')) {
-    block.setAttribute('aria-label', title.textContent.trim());
+  // 4) Accessibility: use title text for region label if not set
+  if (titleEl && !block.getAttribute('aria-label')) {
+    const plainTitle =
+      titleEl.textContent?.trim() ||
+      titleEl.innerText?.trim() || '';
+    if (plainTitle) block.setAttribute('aria-label', plainTitle);
   }
 }
