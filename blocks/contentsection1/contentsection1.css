@@ -7,31 +7,24 @@
   line-height: 1.6;
 }
 
-/* H3: Top heading */
-.section.contentsection1-container .contentsection1.block h3 {
-  color: #009cde;
-  font-size: 1.25rem; /* ~20px */
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-/* H4: Subheadings */
+/* h3 and h4: same bright blue */
+.section.contentsection1-container .contentsection1.block h3,
 .section.contentsection1-container .contentsection1.block h4 {
+  color: #009cde; /* Same for both */
   font-size: 1.25rem;
-  font-weight: bold;
-  color: #007dc3;
-  margin-bottom: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: none;
   line-height: 1.5;
 }
 
-/* Superscript ® */
+/* Superscript */
 .section.contentsection1-container .contentsection1.block sup {
   font-size: 0.6em;
   vertical-align: super;
 }
 
-/* Top-level UL and bullet */
+/* Top-level bullet (gray text, blue dot) */
 .section.contentsection1-container .contentsection1.block ul {
   list-style: disc;
   margin-left: 1.5rem;
@@ -46,34 +39,35 @@
   color: #4a4a4a;
 }
 
-/* Make top-level bullets blue */
 .section.contentsection1-container .contentsection1.block ul > li::marker {
-  color: #009cde; /* Bright blue */
+  color: #009cde;
   font-size: 1.2rem;
 }
 
-/* Nested list: no bullets, dashes instead */
+/* Nested list in 2 columns */
 .section.contentsection1-container .contentsection1.block ul ul {
   list-style: none;
   margin-left: 0.5rem;
   margin-top: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0.5rem 2rem;
 }
 
 /* Inner list items */
 .section.contentsection1-container .contentsection1.block ul ul li {
   position: relative;
   padding-left: 1.2rem;
-  margin-bottom: 0.5rem;
   font-size: 1.05rem;
   color: #4a4a4a; /* Gray text */
   line-height: 1.5;
 }
 
-/* Blue dash (-) before inner list items */
+/* Blue dash for inner items */
 .section.contentsection1-container .contentsection1.block ul ul li::before {
   content: "-";
   position: absolute;
   left: 0;
-  color: #009cde; /* Blue dash only */
+  color: #009cde;
   font-weight: bold;
 }
