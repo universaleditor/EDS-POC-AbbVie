@@ -5286,7 +5286,7 @@
   },
   {
     "id": "contentsection2",
-    "title": "content-section2",
+    "title": "contentsection2",
     "fields": [
       {
         "component": "richtext",
