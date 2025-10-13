@@ -1,38 +1,37 @@
-/* === Footer Container Background & Layout === */
+/* === Footer Container === */
 .section.threecoloumfooter-container {
   background: linear-gradient(to bottom, #00AEEF 0%, #005B96 100%);
-  padding: 50px 110px;
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* <— THIS is key for top alignment */
+  padding: 50px 110px;
   flex-wrap: wrap;
-  justify-content: space-between; /* better column spacing */
-  align-items: flex-start;
   box-sizing: border-box;
   font-family: "Roboto", Arial, sans-serif;
 }
 
-/* === Each Column Wrapper === */
+/* === Each Column === */
 .threecoloumfooter-wrapper {
   flex: 1 1 33.333%;
   max-width: 33.333%;
-  padding: 0 30px; /* balanced padding */
   box-sizing: border-box;
+  padding: 0 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  vertical-align: top; /* helps if display changes */
 }
 
-/* === Headings inside each column === */
+/* === Column Headings === */
 .threecoloumfooter-wrapper h5 {
   color: #ffffff;
-  font-size: 1.25rem;           /* match Image 2 */
+  font-size: 1.25rem;
   font-weight: 700;
-  margin: 0 0 16px 0;           /* reset browser default top margin */
+  margin: 0 0 16px 0; /* reset top margin so all start same line */
   line-height: 1.4;
-  display: flex;
-  align-items: center;
 }
 
-/* === Remove Default Bullets === */
+/* === Remove List Defaults === */
 .threecoloumfooter-wrapper ul {
   list-style: none;
   margin: 0;
@@ -41,7 +40,7 @@
 
 /* === List Items === */
 .threecoloumfooter-wrapper li {
-  margin-bottom: 12px; /* more breathing room */
+  margin: 0 0 12px 0;
   line-height: 1.5;
 }
 
@@ -49,7 +48,6 @@
 .threecoloumfooter-wrapper a {
   color: #ffffff;
   font-size: 1.05rem;
-  font-weight: 400;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -60,31 +58,30 @@
   text-decoration: underline;
 }
 
-/* === Non-Link Items (like "Cookies Settings") === */
+/* === Non-Link Items === */
 .threecoloumfooter-wrapper li:not(:has(a)) {
   color: #ffffff;
   font-size: 1.05rem;
-  font-weight: 400;
 }
 
-/* === Icon for "Your Privacy Choices" === */
+/* === Privacy Icon === */
 .threecoloumfooter-wrapper li:last-child a::after {
   content: "";
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  background: url("https://upload.wikimedia.org/wikipedia/commons/8/8d/Privacy_icon.svg") no-repeat center;
+  width: 18px;
+  height: 18px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zM12 20c-4.42-1.17-7-5.57-7-9.34V6.3l7-3.11 7 3.11v4.36C19 14.43 16.42 18.83 12 20z"/></svg>') no-repeat center;
   background-size: contain;
   margin-left: 6px;
 }
 
-/* === Responsive Adjustments === */
+/* === Responsive === */
 @media (max-width: 992px) {
   .threecoloumfooter-wrapper {
     flex: 1 1 100%;
     max-width: 100%;
-    margin-bottom: 30px;
     padding: 0;
+    margin-bottom: 30px;
   }
 
   .threecoloumfooter-wrapper h5 {
