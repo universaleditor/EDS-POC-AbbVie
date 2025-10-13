@@ -13,7 +13,7 @@
 .block.eyebrow-bar .eyebrow-bar__inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 8px 16px;           /* thin top bar */
+  padding: 0;           /* thin top bar */
   text-align: center;          /* center like the screenshot */
 }
 
@@ -29,4 +29,10 @@ padding:0 !important;
 
 .eyebrow-bar-section{
 margin-bottom:0 !important;
+}
+
+.eyebrow-bar__message p{
+    margin-top:0 !important;
+    font-size: 1.06rem;
+    line-height: 2;
 }
