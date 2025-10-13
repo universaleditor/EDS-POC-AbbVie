@@ -1,6 +1,6 @@
-/* === Footer Section Container === */
+/* === Footer Container Background & Layout === */
 .section.threecoloumfooter-container {
-  background: linear-gradient(to bottom, #009fda 0%, #005f99 100%);
+  background: linear-gradient(to bottom, #00AEEF 0%, #005B96 100%);
   padding: 50px 20px;
   display: flex;
   flex-wrap: wrap;
@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-/* === Each Column === */
+/* === Each Column Wrapper === */
 .threecoloumfooter-wrapper {
   flex: 1 1 33.333%;
   max-width: 33.333%;
@@ -17,12 +17,8 @@
   box-sizing: border-box;
 }
 
-.promo-text__content {
-  text-align: left;
-}
-
-/* === Column Headings === */
-.promo-text__content h5 {
+/* === Headings inside each column === */
+.threecoloumfooter-wrapper h5 {
   color: #ffffff;
   font-size: 1.125rem;
   font-weight: 700;
@@ -30,18 +26,20 @@
   line-height: 1.3;
 }
 
-/* === Link List === */
-.promo-text__content ul {
+/* === Remove Default Bullets === */
+.threecoloumfooter-wrapper ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.promo-text__content li {
+/* === List Items === */
+.threecoloumfooter-wrapper li {
   margin-bottom: 10px;
 }
 
-.promo-text__content a {
+/* === Links === */
+.threecoloumfooter-wrapper a {
   color: #ffffff;
   font-size: 1rem;
   font-weight: 400;
@@ -49,18 +47,18 @@
   transition: all 0.2s ease;
 }
 
-.promo-text__content a:hover {
+.threecoloumfooter-wrapper a:hover {
   text-decoration: underline;
 }
 
-/* === Handle Plain Text Links (like Cookie Settings) === */
-.promo-text__content li:not(:has(a)) {
+/* === Non-Link Items (like "Cookies Settings") === */
+.threecoloumfooter-wrapper li:not(:has(a)) {
   color: #ffffff;
   font-size: 1rem;
   font-weight: 400;
 }
 
-/* === Responsive === */
+/* === Responsive Adjustments === */
 @media (max-width: 992px) {
   .threecoloumfooter-wrapper {
     flex: 1 1 100%;
@@ -68,11 +66,12 @@
     margin-bottom: 30px;
   }
 
-  .promo-text__content h5 {
+  .threecoloumfooter-wrapper h5 {
     font-size: 1rem;
   }
 
-  .promo-text__content a {
+  .threecoloumfooter-wrapper a,
+  .threecoloumfooter-wrapper li {
     font-size: 0.95rem;
   }
 }
