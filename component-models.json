@@ -5304,6 +5304,25 @@
     ]
   },
   {
+    "id": "contentsection3",
+    "title": "contentsection3",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "jcr:title",
+        "label": "Title"
+      }
+    ]
+  },
+  {
     "id": "threecoloumfooter",
     "title": "threecoloumfooter",
     "fields": [
