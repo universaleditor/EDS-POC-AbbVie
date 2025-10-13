@@ -5148,7 +5148,7 @@
     ]
   },
   {
-    "id": "hero",
+    "id": "hero-v1",
     "fields": [
       { "component": "reference", "name": "image", "label": "Background Image", "valueType": "string" },
 

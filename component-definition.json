@@ -158,7 +158,7 @@
           }
         },
         {
-          "title": "Hero",
+          "title": "Hero V1",
           "id": "hero-v1",
           "plugins": {
             "xwalk": {
