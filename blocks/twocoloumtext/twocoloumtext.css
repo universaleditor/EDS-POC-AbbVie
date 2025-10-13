@@ -13,7 +13,7 @@
 }
 
 .twocoloumtext-wrapper {
-  flex: 1 1 50%;
+  flex: 1;
   padding: 0 50px;
   box-sizing: border-box;
   display: flex;
