@@ -39,4 +39,6 @@ margin-bottom:0 !important;
 
 .eyebrow-bar__message p a{
     color: #962e69;
+    font-weight:500;
+    text-decoration:none !important;
  }

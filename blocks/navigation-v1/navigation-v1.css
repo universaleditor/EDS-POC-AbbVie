@@ -98,3 +98,7 @@
 .nav-v1-section{
   margin:0 !important;
 }
+
+.navigation-v1 ul li{
+    font-size:12px;
+}
