@@ -34,3 +34,42 @@
 .section.contentsection1-container .contentsection1.block div[data-aue-type="richtext"] {
   margin-top: 10px;
 }
+.section.contentsection1-container .contentsection1.block ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  margin-top: 1rem;
+  color: #4a4a4a;
+  font-size: 1.1rem;
+}
+
+/* First level list item (bold blue bullet) */
+.section.contentsection1-container .contentsection1.block ul > li {
+  margin-bottom: 1rem;
+  font-weight: normal;
+  line-height: 1.6;
+}
+
+/* Inner nested list */
+.section.contentsection1-container .contentsection1.block ul ul {
+  list-style: none;
+  margin-top: 0.75rem;
+  margin-left: 1rem;
+}
+
+/* Inner list items with dash (-) and blue color */
+.section.contentsection1-container .contentsection1.block ul ul li {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #007dc3;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+/* Optional: remove extra dash spacing */
+.section.contentsection1-container .contentsection1.block ul ul li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: #007dc3;
+}
