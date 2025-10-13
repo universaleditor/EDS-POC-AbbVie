@@ -20,9 +20,6 @@
   align-items: flex-start;
   justify-content: flex-start;
   margin: 0 !important;
-  flex-direction: column; /* stack heading, paragraph, button vertically */
-  justify-content: space-between; /* push button to the bottom */
-  box-sizing: border-box;
 }
 
 .twocoloumtext-wrapper:first-child {
