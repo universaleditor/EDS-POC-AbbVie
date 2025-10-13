@@ -14,7 +14,7 @@
   display: flex;
   gap: 32px;
   align-items: center;
-  justify-content: center;     /* centered like the screenshot */
+  justify-content: flex-end;
   list-style: none;
   margin: 0;        /* thin bar */
 }

@@ -4,10 +4,11 @@
 }
 
 .block.eyebrow-bar .eyebrow-bar {
-  background: #e9e3de;        /* soft beige/grey like the example */
-  color: #5a4a45;              /* muted dark text */
+  background: #eaeaea;        /* soft beige/grey like the example */
+  color: #575756;              /* muted dark text */
   border-bottom: 1px solid rgba(0,0,0,.06);
   font-size: 14px;
+  font-weight: lighter;
 }
 
 .block.eyebrow-bar .eyebrow-bar__inner {
