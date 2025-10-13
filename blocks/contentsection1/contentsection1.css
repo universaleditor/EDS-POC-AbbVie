@@ -50,8 +50,9 @@
   margin-left: 0.5rem;
   margin-top: 0.75rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 0.5rem 2rem;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  row-gap: 0.5rem;
 }
 
 /* Inner list items */
