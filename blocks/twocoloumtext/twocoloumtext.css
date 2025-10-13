@@ -46,21 +46,22 @@
 }
 
 .twocoloumtext a {
-  display: inline-block;
-  background-color: #8c1d58; /* Purple/Magenta shade */
-  color: #fff;
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 14px 28px;
-  text-decoration: none;
-  border-radius: 8px;
-  text-align: center;
-  transition: background-color 0.2s ease;
+  display: inline-block !important;
+  background-color: #8c1d58 !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  padding: 14px 28px !important;
+  text-decoration: none !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+  transition: background-color 0.2s ease !important;
 }
 
 .twocoloumtext a:hover {
-  background-color: #6e1445; /* Darker shade for hover */
+  background-color: #6e1445 !important;
 }
+
 
 
 @media (max-width: 992px) {
