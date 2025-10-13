@@ -53,6 +53,7 @@
   line-height: 1.4375 !important;
   margin-bottom: 28px;
   text-align: left;
+  display: inline-block;
 }
 
 .twocoloumtext a {
