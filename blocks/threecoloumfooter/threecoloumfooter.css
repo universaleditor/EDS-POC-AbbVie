@@ -26,8 +26,7 @@
 /* === Column Headings === */
 .threecoloumfooter-wrapper h5 {
   color: #ffffff;
-  font-size: 1.125rem;
-  font-weight: 700;
+  font-size: 1.2rem;
   font-family: Univers LT W01_65 Bold1475968;
   margin: 0 0 16px 0; /* reset top margin so all start same line */
   line-height: 1.4;
@@ -48,7 +47,7 @@
 
 /* === Links === */
 .threecoloumfooter-wrapper a {
-  color: #ffffff;
+  color: #ffffffcc;
   font-size: 1rem;
   font-family: Univers LT W01_65 Bold1475968;
   text-decoration: none;
