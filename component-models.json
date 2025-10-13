@@ -152,6 +152,10 @@
           {
             "name": "twocoloumtext",
             "value": "twocoloumtext"
+          },
+          {
+            "name": "threecoloumfooter",
+            "value": "threecoloumfooter"
           }
         ]
       }
@@ -5277,6 +5281,19 @@
         "valueType": "string",
         "name": "jcr:title",
         "label": "Title"
+      }
+    ]
+  },
+  {
+    "id": "threecoloumfooter",
+    "title": "threecoloumfooter",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
       }
     ]
   }

@@ -26,7 +26,8 @@
       "eyebrow-bar",
       "navigation-v1",
       "hero-v1",
-      "twocoloumtext"
+      "twocoloumtext",
+      "threecoloumfooter"
     ]
   },
   {
@@ -94,6 +95,12 @@
     "components": [
       "text",
       "title"
+    ]
+  },
+  {
+    "id": "threecoloumfooter",
+    "components": [
+      "text"
     ]
   }
 ]
