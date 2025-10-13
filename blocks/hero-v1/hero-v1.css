@@ -2,16 +2,17 @@
 
 .hero {
   position: relative;
-  min-height: clamp(420px, 62vh, 760px);
+  isolation: isolate;
+  min-height: clamp(520px, 70vh, 840px);
+  overflow: hidden;
   display: grid;
   place-items: center;
-  overflow: hidden;
   background-image: var(--hero-bg, none);
   background-size: cover;
   background-position: center;
 }
 
-/* background as absolute <picture> */
+/* Background layer (uses <picture> if present) */
 .hero .hero-bg,
 .hero .hero-bg picture,
 .hero .hero-bg img {
@@ -22,53 +23,76 @@
 }
 .hero .hero-bg img { object-fit: cover; }
 
-/* content wrapper */
+/* Layout */
 .hero .hero-inner {
   position: relative;
   z-index: 1;
-  width: min(960px, 92vw);
-  padding: 24px;
+  width: min(1200px, 94vw);
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) 1fr;
+  gap: clamp(16px, 3vw, 40px);
+  align-items: center;
+  padding: clamp(12px, 2vw, 24px);
 }
 
-/* the card */
-.hero .hero-card {
-  margin: 0 auto;
-  text-align: center;
-  padding: clamp(16px, 3vw, 36px);
-  background: color-mix(in oklab, white 82%, transparent);
+/* Left panel: CTA card stack */
+.hero .hero-left {
+  background: color-mix(in oklab, #0b2a4d 60%, transparent);
   backdrop-filter: blur(4px);
-  border-radius: 22px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  border-radius: 18px;
+  padding: clamp(16px, 2.4vw, 28px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.18);
 }
 
-.hero .eyebrow {
-  margin: 0 0 .25rem;
-  font-weight: 700;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  opacity: .85;
+.hero .hero-cta-list {
+  display: grid;
+  gap: clamp(12px, 2vw, 18px);
 }
 
-.hero .title {
-  margin: 0 0 .5rem;
+.hero .hero-cta .btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: clamp(14px, 1.8vw, 18px) clamp(16px, 2vw, 22px);
+  border-radius: 12px;
+  font-weight: 800;
   line-height: 1.1;
-  font-size: clamp(28px, 4.5vw, 48px);
-}
-
-.hero .body { margin: 0 auto 1rem; font-size: clamp(16px, 2vw, 18px); }
-
-/* CTAs */
-.hero .cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-
-.hero .btn {
-  display: inline-block;
-  padding: .75rem 1.25rem;
-  border-radius: 999px;
   text-decoration: none;
-  font-weight: 700;
-  border: 2px solid transparent;
+  border: 0;
+  /* AbbVie-ish magenta; tweak via CSS var if needed */
+  background: var(--hero-cta-bg, #8c2b61);
+  color: var(--hero-cta-fg, #fff);
+  box-shadow: 0 6px 16px rgba(0,0,0,.18);
+  transition: transform .1s ease, box-shadow .2s ease, opacity .2s ease;
+}
+.hero .hero-cta .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.22); }
+.hero .hero-cta .btn:active { transform: translateY(0); }
+
+/* Right column: Title + Body */
+.hero .hero-right {
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,.35);
 }
 
-.hero .btn.primary   { background: #0057ff; color: #fff; }
-.hero .btn.secondary { background: #fff;    color: #111; border-color: #111; }
-.hero .btn.link      { background: transparent; color: #111; text-decoration: underline; }
+.hero .hero-title {
+  margin: 0 0 .5rem;
+  font-size: clamp(28px, 5vw, 56px);
+  line-height: 1.05;
+  font-weight: 800;
+}
+
+.hero .hero-body {
+  margin: .25rem 0 0;
+  font-size: clamp(16px, 2.2vw, 20px);
+  max-width: 46ch;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 840px) {
+  .hero .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .hero .hero-right { order: 2; }
+  .hero .hero-left  { order: 1; }
+}
