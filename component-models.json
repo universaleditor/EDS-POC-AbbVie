@@ -5194,60 +5194,6 @@
     ]
   },
   {
-    "id": "fifty-fifty-container",
-    "label": "Fifty Fifty Container",
-    "fields": [
-      {
-        "component": "group",
-        "name": "leftColumn",
-        "label": "Left Column",
-        "fields": [
-          {
-            "component": "richtext",
-            "name": "title",
-            "label": "Title",
-            "valueType": "string"
-          },
-          {
-            "component": "richtext",
-            "name": "text",
-            "label": "Text",
-            "valueType": "string"
-          },
-          {
-            "component": "button",
-            "name": "button",
-            "label": "Button"
-          }
-        ]
-      },
-      {
-        "component": "group",
-        "name": "rightColumn",
-        "label": "Right Column",
-        "fields": [
-          {
-            "component": "richtext",
-            "name": "title",
-            "label": "Title",
-            "valueType": "string"
-          },
-          {
-            "component": "richtext",
-            "name": "text",
-            "label": "Text",
-            "valueType": "string"
-          },
-          {
-            "component": "button",
-            "name": "button",
-            "label": "Button"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "id": "twocoloumwithimage",
     "title" :"twocoloumwithimage",
     "fields": [

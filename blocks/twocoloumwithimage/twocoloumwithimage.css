@@ -85,8 +85,7 @@
   text-decoration: none !important;
 }
 
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p a:hover
-{
+.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p a:hover {
   text-decoration: underline !important;
 }
 
