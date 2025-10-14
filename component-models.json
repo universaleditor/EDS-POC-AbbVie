@@ -5415,7 +5415,6 @@
   {
     "id": "promotional-banner",
     "label": "Promotional Banner",
-    "type": "object",
     "fields": [
       {
         "component": "text",
