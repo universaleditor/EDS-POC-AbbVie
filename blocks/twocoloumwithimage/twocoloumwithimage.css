@@ -10,7 +10,7 @@
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
   align-items: flex-start !important;
-  max-width: 1000px;
+  max-width: 90% !important
   margin: 0 auto !important;
   box-sizing: border-box;
 }
