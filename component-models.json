@@ -5393,8 +5393,8 @@
       {
         "component": "text",
         "valueType": "string",
-        "value": "",
-        "name": "jcr:title",
+        "name": "title",
+        "placeholder": "Enter title",
         "label": "Title"
       }
     ]
