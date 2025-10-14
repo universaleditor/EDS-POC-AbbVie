@@ -5353,6 +5353,29 @@
     ]
   },
   {
+    "id": "header",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "header",
+        "label": "header"
+      }
+    ]
+  },
+  {
+    "id": "rich-text",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "rich-text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "contentsection1",
     "title": "contentsection1",
     "fields": [
