@@ -118,3 +118,23 @@
   .hero-v1__right { order: 2; }
   .hero-v1__left  { order: 1; }
 }
+
+/* Hardcoded logo overlay (top-left) */
+.hero-v1__brand {
+  position: absolute;
+  top: clamp(12px, 2vw, 24px);
+  left: clamp(16px, 3vw, 36px);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 4px 6px;            /* tiny hit area */
+  background: transparent;     /* keep it invisible */
+}
+
+.hero-v1__brand img {
+  height: 44px;                /* adjust to taste */
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); /* readable on bright images */
+}

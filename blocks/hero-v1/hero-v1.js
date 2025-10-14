@@ -71,6 +71,14 @@ export default function decorate(block) {
   inner.append(left, right);
   root.append(bg, inner);
 
+  // HARD-CODED LOGO (top-left overlay)
+  const brand = document.createElement('a');
+  brand.className = 'hero-v1__brand';
+  brand.href = '/'; // change if needed
+  brand.innerHTML = '<img src="https://www.skyrizi.com/content/dam/skyriziivy/images/homepage/skyrizi-logo-global-homepage_r23_2x_desktop.png" alt="Brand logo" loading="eager" decoding="async">';
+  root.append(brand);
+
+
   // swap original rows
   block.textContent = '';
   block.append(root);
