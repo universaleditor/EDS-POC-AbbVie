@@ -1,5 +1,5 @@
 // Promotional Banner: adds wrappers and semantic classes
-// Keeps authored nodes intact for editing
+// Combines right RTEs into a single parent for layout
 
 export default function decorate(block) {
   // --- Wrap the entire block for styling ---
@@ -28,16 +28,31 @@ export default function decorate(block) {
     leftText.classList.add('promotional-banner__left-text');
   }
 
-  // --- Right RTE One ---
+  // --- Right RTE One & Two ---
   let rightRteOne = inner.querySelector('[data-aue-prop="rightRteOne"]');
-  if (rightRteOne) {
-    rightRteOne.classList.add('promotional-banner__right-rte', 'promotional-banner__right-rte--one');
-  }
-
-  // --- Right RTE Two ---
   let rightRteTwo = inner.querySelector('[data-aue-prop="rightRteTwo"]');
-  if (rightRteTwo) {
-    rightRteTwo.classList.add('promotional-banner__right-rte', 'promotional-banner__right-rte--two');
+
+  if (rightRteOne || rightRteTwo) {
+    // Create a wrapper for the right column
+    const rightColumn = document.createElement('div');
+    rightColumn.className = 'promotional-banner__right-column';
+
+    // Move the RTEs into the right column
+    if (rightRteOne) {
+      rightRteOne.classList.add('promotional-banner__right-rte', 'promotional-banner__right-rte--one');
+      rightColumn.appendChild(rightRteOne);
+    }
+    if (rightRteTwo) {
+      rightRteTwo.classList.add('promotional-banner__right-rte', 'promotional-banner__right-rte--two');
+      rightColumn.appendChild(rightRteTwo);
+    }
+
+    // Insert the right column into inner after left text
+    if (leftText?.parentElement) {
+      inner.insertBefore(rightColumn, leftText.nextSibling);
+    } else {
+      inner.appendChild(rightColumn);
+    }
   }
 
   // --- Add row classes to direct children of inner ---
