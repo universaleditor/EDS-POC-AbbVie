@@ -1,41 +1,49 @@
-/* Wrapper for the promotional banner */
-.promotional-banner {
-    display: flex;                 /* Enables two-column layout */
-    flex-wrap: wrap;               /* Ensures responsiveness on smaller screens */
-    gap: 20px;                     /* Space between left and right columns */
+/* Parent section wrapper */
+.section.promotional-banner-container {
+    width: 100%;
     padding: 20px;
-    background-color: #f9f9f9;     /* Optional background */
-    border-radius: 8px;            /* Optional rounded corners */
+    box-sizing: border-box;
 }
 
-/* Left column */
-.promotional-banner > div:first-child {
-    flex: 1 1 200px;               /* Flexible width with minimum of 200px */
-    max-width: 200px;              /* Keeps left column fixed at 200px */
+/* Banner wrapper */
+.promotional-banner-wrapper {
+    width: 100%;
+}
+
+/* Actual promotional banner block */
+.promotional-banner-wrapper .promotional-banner.block {
+    display: flex;                 /* two-column layout */
+    flex-wrap: wrap;               /* responsive wrap for small screens */
+    gap: 20px;                     /* space between columns */
+    padding: 20px;
+    background-color: #f9f9f9;     /* optional background */
+    border-radius: 8px;
+}
+
+/* Left column (ABOUT SKYRIZI) */
+.promotional-banner-wrapper .promotional-banner.block > div:first-child {
+    flex: 1 1 200px;               /* flexible width, min 200px */
+    max-width: 200px;              /* optional max width */
     font-weight: bold;
     display: flex;
-    align-items: center;           /* Vertically center text if desired */
+    align-items: center;           /* vertically center text */
 }
 
-/* Right column */
-.promotional-banner > div:nth-child(2),
-.promotional-banner > div:nth-child(3) {
-    flex: 2 1 400px;               /* Flexible width for right side */
+/* Right column (both RTEs stacked vertically) */
+.promotional-banner-wrapper .promotional-banner.block > div:nth-child(2),
+.promotional-banner-wrapper .promotional-banner.block > div:nth-child(3) {
+    flex: 2 1 400px;               /* takes remaining space */
+    display: flex;
+    flex-direction: column;        /* stack RTEs vertically */
 }
 
-/* Stack both RTE blocks vertically */
-.promotional-banner > div:nth-child(2),
-.promotional-banner > div:nth-child(3) {
+/* Add spacing between the two RTE blocks */
+.promotional-banner-wrapper .promotional-banner.block > div:nth-child(2) {
     margin-bottom: 10px;
 }
 
-/* Right column container */
-.promotional-banner > div:nth-child(2) {
-    margin-bottom: 10px;
-}
-
-/* Optional: make text readable and nicely spaced */
-.promotional-banner p {
+/* Paragraph styling inside banner */
+.promotional-banner-wrapper .promotional-banner.block p {
     margin: 0 0 10px 0;
     line-height: 1.5;
 }
