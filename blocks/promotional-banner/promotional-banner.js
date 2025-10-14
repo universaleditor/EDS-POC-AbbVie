@@ -1,51 +1,68 @@
-export default function decorate(block) {
-  // Add base class
-  block.classList.add('promotional-banner');
+// Promotional Banner: adds semantic classes and wrapper structure
+// Strict EDS: keeps UE-authored nodes intact, adds binding targets
 
-  // --- Left text ---
-  const leftText = block.querySelector('[data-aue-prop="leftText"]');
-  if (leftText) {
-    leftText.classList.add('promotional-banner__left-text');
+export default function decorate(block) {
+  // Wrap the whole block for styling
+  const wrap = document.createElement('div');
+  wrap.className = 'promotional-banner';
+  wrap.setAttribute('role', 'region');
+  wrap.setAttribute('aria-label', 'Promotional Banner');
+
+  // Move existing children into wrapper
+  while (block.firstChild) wrap.appendChild(block.firstChild);
+  block.appendChild(wrap);
+
+  // Optional: inner container for max-width or grid layouts
+  let inner = wrap.querySelector('.promotional-banner__inner');
+  if (!inner) {
+    inner = document.createElement('div');
+    inner.className = 'promotional-banner__inner';
+    // move all top-level children into inner
+    while (wrap.firstChild) inner.appendChild(wrap.firstChild);
+    wrap.appendChild(inner);
   }
+
+  // --- Left Text ---
+  let leftText = inner.querySelector('[data-aue-prop="leftText"]');
+  if (!leftText) {
+    leftText = document.createElement('p');
+    leftText.setAttribute('data-aue-prop', 'leftText');
+    leftText.setAttribute('data-aue-type', 'text');
+    leftText.setAttribute('data-aue-label', 'Left Text');
+    inner.appendChild(leftText);
+  }
+  leftText.classList.add('promotional-banner__left-text');
 
   // --- Right RTE One ---
-  const rightRteOne = block.querySelector('[data-aue-prop="rightRteOne"]');
-  if (rightRteOne) {
-    rightRteOne.classList.add('promotional-banner__right-rte', 'promotional-banner__right-rte--one');
+  let rightRteOne = inner.querySelector('[data-aue-prop="rightRteOne"]');
+  if (!rightRteOne) {
+    rightRteOne = document.createElement('div');
+    rightRteOne.setAttribute('data-aue-prop', 'rightRteOne');
+    rightRteOne.setAttribute('data-aue-type', 'richtext');
+    rightRteOne.setAttribute('data-aue-label', 'Right RTE One');
+    inner.appendChild(rightRteOne);
   }
+  rightRteOne.classList.add('promotional-banner__right-rte', 'promotional-banner__right-rte--one');
 
   // --- Right RTE Two ---
-  const rightRteTwo = block.querySelector('[data-aue-prop="rightRteTwo"]');
-  if (rightRteTwo) {
-    rightRteTwo.classList.add('promotional-banner__right-rte', 'promotional-banner__right-rte--two');
+  let rightRteTwo = inner.querySelector('[data-aue-prop="rightRteTwo"]');
+  if (!rightRteTwo) {
+    rightRteTwo = document.createElement('div');
+    rightRteTwo.setAttribute('data-aue-prop', 'rightRteTwo');
+    rightRteTwo.setAttribute('data-aue-type', 'richtext');
+    rightRteTwo.setAttribute('data-aue-label', 'Right RTE Two');
+    inner.appendChild(rightRteTwo);
   }
+  rightRteTwo.classList.add('promotional-banner__right-rte', 'promotional-banner__right-rte--two');
 
-  // --- Add classes to wrapper <div>s for layout control ---
-  const wrapper = block.closest('.promotional-banner-wrapper');
-  wrapper?.classList.add('promotional-banner-wrapper--styled');
-
-  // Each top-level direct <div> inside the block
-  const topLevelDivs = [...block.children];
-  topLevelDivs.forEach((div, i) => {
-    div.classList.add('promotional-banner__row', `promotional-banner__row--${i + 1}`);
+  // --- Optional: add wrapper rows for layout control ---
+  [...inner.children].forEach((child, idx) => {
+    child.classList.add('promotional-banner__row', `promotional-banner__row--${idx + 1}`);
   });
 
-  // --- Accessibility: aria-label from left text ---
+  // --- Accessibility: use left text as aria-label ---
   const labelText = leftText?.textContent?.trim();
-  if (labelText && !block.getAttribute('aria-label')) {
-    block.setAttribute('aria-label', labelText);
+  if (labelText && !wrap.getAttribute('aria-label')) {
+    wrap.setAttribute('aria-label', labelText);
   }
-
-  // --- Optional: Add label-based helper classes for text blocks ---
-  const propEls = [...block.querySelectorAll('[data-aue-prop]')];
-  propEls.forEach((el) => {
-    const prop = el.getAttribute('data-aue-prop');
-    const label = el.getAttribute('data-aue-label') || '';
-    const labelSlug = label
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')  // sanitize
-      .replace(/(^-|-$)/g, '');
-    el.classList.add(`promotional-banner__${prop}`);
-    if (labelSlug) el.classList.add(`promotional-banner__${labelSlug}`);
-  });
 }
