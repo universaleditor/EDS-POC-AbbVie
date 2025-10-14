@@ -109,10 +109,8 @@
   {
     "id": "contentsection",
     "components": [
-      "text",
-      "image",
-      "button",
-      "title"
+      "header",
+      "rich-text"
     ]
   }
 ]
