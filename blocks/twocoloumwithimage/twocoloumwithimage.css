@@ -18,7 +18,7 @@
 /* === Left image column === */
 .section.twocoloumwithimage-container .twocoloumwithimage.block > div:first-child img {
   width: 100% !important;
-  max-width: 430px !important;
+  max-width: 440px !important;
   height: auto !important;
   display: block !important;
   margin: 0 auto !important;
