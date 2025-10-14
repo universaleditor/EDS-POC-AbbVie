@@ -1,10 +1,9 @@
-/* Scope: hero-v1 only — SKYRIZI look */
+/* everything scoped to .hero-v1 */
 
 .hero-v1 {
-  width:100vw;
   position: relative;
   isolation: isolate;
-  height: 660px;
+  min-height: clamp(560px, 72vh, 900px);
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -25,65 +24,69 @@
 .hero-v1__inner {
   position: relative;
   z-index: 1;
-  width: min(1000px, 96vw);
+  width: min(1280px, 96vw);
   display: grid;
-  grid-template-columns: minmax(450px, 300px) 1fr;
-  gap: 0;
+  grid-template-columns: minmax(300px, 420px) 1fr;
+  gap: clamp(20px, 3.5vw, 56px);
   align-items: center;
-  margin-top: 68px;
+  padding: clamp(16px, 2vw, 28px);
 }
 
-/* LEFT: glassy blue panel with stacked CTAs */
+/* LEFT: logo above card + stacked CTAs */
 .hero-v1__left { display: grid; justify-items: stretch; }
+
+/* Logo pinned above the card */
+.hero-v1__logo {
+  display: grid;
+  justify-items: start;
+  margin-left: clamp(8px, 1.5vw, 14px);   /* align with card edge */
+  margin-bottom: clamp(14px, 2vw, 22px);
+}
+.hero-v1__logo-link {
+  display: inline-block;
+  text-decoration: none;
+}
+.hero-v1__logo img {
+  max-height: 64px;     /* tweak to match comp */
+  width: auto;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35));
+}
+
 .hero-v1__card {
-  background: color-mix(in oklab, #0060A9 75%, transparent);
-  border-radius: 10px;
-  padding-top: 25px;
-  padding-bottom: 40px;
-  padding-right: 45px;
-  padding-left: 45px;
-  height: 80%;
-  width: 60%;
+  background: color-mix(in oklab, #0b3a68 62%, transparent);
+  backdrop-filter: blur(4px);
+  border-radius: 22px;
+  padding: clamp(18px, 2.4vw, 28px);
+  box-shadow: 0 8px 30px rgba(0,0,0,.22);
 }
 .hero-v1__card-title {
-  margin: 10px 0 35px 0;
+  margin: 0 0 clamp(12px, 1.4vw, 18px);
   color: #ffffff;
   font-weight: 800;
   letter-spacing: .04em;
   text-transform: uppercase;
   text-align: center;
 }
-.hero-v1__title h1{
-    line-height:0.2;
-}
-
-.hero-v1__cta-list { display: grid; gap: 1.25rem; }
-
-.hero-v1__cta a:hover{
-    color:#962e69 !important;
-}
+.hero-v1__cta-list { display: grid; gap: clamp(12px, 2vw, 18px); }
 
 /* SKYRIZI-style pill buttons */
 .hero-v1__btn {
   display: block;
+  width: 100%;
   text-align: center;
-  padding: 20px;
-  border-radius: 6px;
+  padding: clamp(14px, 1.8vw, 18px) clamp(16px, 2vw, 22px);
+  border-radius: 14px;
   font-weight: 800;
   line-height: 1.1;
-  text-decoration: none !important;
+  text-decoration: none;
   border: 0;
-  background: #962e69;            /* magenta */
-  color: #ffffff !important;
+  background: #8c2b61;            /* magenta */
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0,0,0,.18);
+  transition: transform .1s ease, box-shadow .2s ease, opacity .2s ease;
 }
-.hero-v1__btn:hover   { background-color: #ffffff; }
+.hero-v1__btn:hover   { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,.24); }
 .hero-v1__btn:active  { transform: translateY(0); }
-.hero-v1__btn[href="#"] {
-   cursor: default;
-   font-size: 22px;
-   padding-top: 27px;
-   padding-bottom: 10px;}
-   /* optional: non-link look */
 
 /* RIGHT: large white headline + smaller copy */
 .hero-v1__right { color: #fff; text-shadow: 0 2px 14px rgba(0,0,0,.35); }
@@ -95,46 +98,15 @@
   letter-spacing: .01em;
 }
 .hero-v1__body {
-  margin: 2.5rem 0 0;
+  margin: .25rem 0 0;
   font-size: clamp(16px, 2.1vw, 20px);
   max-width: 48ch;
-  line-height: 0.5;
 }
-
-.hero-v1-wrapper{
-  max-width: unset !important;
-  margin: auto;
-  padding: 0 !important;
-}
-
-.hero-v1-container{
-  margin: 0 !important;
-}
-
 
 /* Mobile: stack with CTAs first */
 @media (max-width: 960px) {
   .hero-v1__inner { grid-template-columns: 1fr; gap: 18px; }
   .hero-v1__right { order: 2; }
   .hero-v1__left  { order: 1; }
-}
-
-/* Hardcoded logo overlay (top-left) */
-.hero-v1__brand {
-  position: absolute;
-  top: clamp(12px, 2vw, 24px);
-  left: clamp(16px, 3vw, 36px);
-  z-index: 3;
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 4px 6px;            /* tiny hit area */
-  background: transparent;     /* keep it invisible */
-}
-
-.hero-v1__brand img {
-  height: 44px;                /* adjust to taste */
-  width: auto;
-  display: block;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); /* readable on bright images */
+  .hero-v1__logo  { justify-items: center; margin-left: 0; }
 }
