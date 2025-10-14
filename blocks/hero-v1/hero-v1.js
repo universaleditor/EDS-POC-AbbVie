@@ -31,19 +31,9 @@ export default function decorate(block) {
   const inner = document.createElement('div');
   inner.className = 'hero-v1__inner';
 
-  // LEFT PANEL (logo above card + stacked CTAs)
+  // LEFT PANEL (SKYRIZI-style card with heading + stacked CTAs)
   const left = document.createElement('div');
   left.className = 'hero-v1__left';
-
-  // HARD-CODED LOGO ABOVE CARD (edit src/href as needed)
-  const logoWrap = document.createElement('div');
-  logoWrap.className = 'hero-v1__logo';
-  logoWrap.innerHTML = `
-    <a href="/" class="hero-v1__logo-link" aria-label="Home">
-      <img src="/path/to/logo.png" alt="Brand Logo" loading="eager" decoding="async">
-    </a>
-  `;
-  left.append(logoWrap);
 
   const card = document.createElement('div');
   card.className = 'hero-v1__card';
@@ -80,6 +70,7 @@ export default function decorate(block) {
 
   inner.append(left, right);
   root.append(bg, inner);
+
 
   // swap original rows
   block.textContent = '';
