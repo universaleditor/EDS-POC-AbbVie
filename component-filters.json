@@ -105,5 +105,14 @@
     "components": [
       "text"
     ]
+  },
+  {
+    "id": "contentsection",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
+    ]
   }
 ]
