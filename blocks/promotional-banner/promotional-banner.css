@@ -1,0 +1,41 @@
+/* Wrapper for the promotional banner */
+.promotional-banner {
+    display: flex;                 /* Enables two-column layout */
+    flex-wrap: wrap;               /* Ensures responsiveness on smaller screens */
+    gap: 20px;                     /* Space between left and right columns */
+    padding: 20px;
+    background-color: #f9f9f9;     /* Optional background */
+    border-radius: 8px;            /* Optional rounded corners */
+}
+
+/* Left column */
+.promotional-banner > div:first-child {
+    flex: 1 1 200px;               /* Flexible width with minimum of 200px */
+    max-width: 200px;              /* Keeps left column fixed at 200px */
+    font-weight: bold;
+    display: flex;
+    align-items: center;           /* Vertically center text if desired */
+}
+
+/* Right column */
+.promotional-banner > div:nth-child(2),
+.promotional-banner > div:nth-child(3) {
+    flex: 2 1 400px;               /* Flexible width for right side */
+}
+
+/* Stack both RTE blocks vertically */
+.promotional-banner > div:nth-child(2),
+.promotional-banner > div:nth-child(3) {
+    margin-bottom: 10px;
+}
+
+/* Right column container */
+.promotional-banner > div:nth-child(2) {
+    margin-bottom: 10px;
+}
+
+/* Optional: make text readable and nicely spaced */
+.promotional-banner p {
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+}
