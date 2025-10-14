@@ -5336,19 +5336,6 @@
         "valueType": "string",
         "name": "title4",
         "label": "Title4"
-      },
-      {
-        "component": "richtext",
-        "name": "text5",
-        "value": "",
-        "label": "Text5",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "title5",
-        "label": "Title5"
       }
     ]
   },
