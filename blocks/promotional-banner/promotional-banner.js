@@ -1,6 +1,3 @@
-// Promotional Banner: adds wrappers and semantic classes
-// Combines right RTEs into a single parent for layout
-
 export default function decorate(block) {
   // --- Wrap the entire block for styling ---
   const wrap = document.createElement('div');
@@ -33,11 +30,9 @@ export default function decorate(block) {
   let rightRteTwo = inner.querySelector('[data-aue-prop="rightRteTwo"]');
 
   if (rightRteOne || rightRteTwo) {
-    // Create a wrapper for the right column
     const rightColumn = document.createElement('div');
     rightColumn.className = 'promotional-banner__right-column';
 
-    // Move the RTEs into the right column
     if (rightRteOne) {
       rightRteOne.classList.add('promotional-banner__right-rte', 'promotional-banner__right-rte--one');
       rightColumn.appendChild(rightRteOne);
@@ -47,7 +42,6 @@ export default function decorate(block) {
       rightColumn.appendChild(rightRteTwo);
     }
 
-    // Insert the right column into inner after left text
     if (leftText?.parentElement) {
       inner.insertBefore(rightColumn, leftText.nextSibling);
     } else {
@@ -59,6 +53,26 @@ export default function decorate(block) {
   [...inner.children].forEach((child, idx) => {
     child.classList.add('promotional-banner__row', `promotional-banner__row--${idx + 1}`);
   });
+
+  // --- Wrap rows 2 and 3 in a new right section ---
+  const row2 = inner.querySelector('.promotional-banner__row--2');
+  const row3 = inner.querySelector('.promotional-banner__row--3');
+
+  if (row2 || row3) {
+    const rightSection = document.createElement('div');
+    rightSection.className = 'promotional-banner__right-section';
+
+    if (row2) rightSection.appendChild(row2);
+    if (row3) rightSection.appendChild(row3);
+
+    // Insert rightSection after row 1 (or at the end if row1 is missing)
+    const row1 = inner.querySelector('.promotional-banner__row--1');
+    if (row1?.parentElement) {
+      inner.insertBefore(rightSection, row1.nextSibling);
+    } else {
+      inner.appendChild(rightSection);
+    }
+  }
 
   // --- Accessibility: use left text as aria-label if present ---
   const labelText = leftText?.textContent?.trim();
