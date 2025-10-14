@@ -5287,68 +5287,68 @@
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "text1",
         "value": "",
-        "label": "Text",
+        "label": "Text1",
         "valueType": "string"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "title",
-        "label": "Title"
+        "name": "title1",
+        "label": "Title1"
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "text2",
         "value": "",
-        "label": "Text",
+        "label": "Text2",
         "valueType": "string"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "title",
-        "label": "Title"
+        "name": "title2",
+        "label": "Title2"
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "text3",
         "value": "",
-        "label": "Text",
+        "label": "Text3",
         "valueType": "string"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "title",
-        "label": "Title"
+        "name": "title3",
+        "label": "Title3"
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "text4",
         "value": "",
-        "label": "Text",
+        "label": "Text4",
         "valueType": "string"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "title",
-        "label": "Title"
+        "name": "title4",
+        "label": "Title4"
       },
       {
         "component": "richtext",
-        "name": "text",
+        "name": "text5",
         "value": "",
-        "label": "Text",
+        "label": "Text5",
         "valueType": "string"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "title",
-        "label": "Title"
+        "name": "title5",
+        "label": "Title5"
       }
     ]
   },
