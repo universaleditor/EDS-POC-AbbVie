@@ -5411,5 +5411,47 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "promotional-banner",
+    "label": "Promotional Banner",
+    "type": "object",
+    "fields": [
+      {
+        "component": "text",
+        "name": "leftText",
+        "label": "Left Text",
+        "description": "Enter the text for the left column (30%).",
+        "required": true
+      },
+      {
+        "component": "richtext",
+        "name": "rightRteOne",
+        "label": "Right RTE One",
+        "description": "Add the first rich text content block for the right column (70%)."
+      },
+      {
+        "component": "richtext",
+        "name": "rightRteTwo",
+        "label": "Right RTE Two",
+        "description": "Add the second rich text content block for the right column (70%)."
+      }
+    ],
+    "meta": {
+      "display": {
+        "layout": {
+          "columns": [
+            {
+              "width": "30%",
+              "fields": ["leftText"]
+            },
+            {
+              "width": "70%",
+              "fields": ["rightRteOne", "rightRteTwo"]
+            }
+          ]
+        }
+      }
+    }
   }
 ]
