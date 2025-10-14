@@ -18,7 +18,7 @@
 /* === Left image column === */
 .section.twocoloumwithimage-container .twocoloumwithimage.block > div:first-child img {
   width: 90% !important;
-  max-width: 420px !important;
+  max-width: 430px !important;
   height: auto !important;
   display: block !important;
   margin: 0 auto !important;
@@ -58,6 +58,7 @@
 
 .section.twocoloumwithimage-container .twocoloumwithimage.block .button-container a.button:hover {
   background-color: #6a1530 !important;
+  text-decoration: none !important;
 }
 
 /* === Force disclaimer to align under right column === */
@@ -87,10 +88,6 @@
 .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(3) p a:hover
 {
   text-decoration: underline !important;
-}
-.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2) p a:hover
- {
-  text-decoration: none !important;
 }
 
 /* === Inserted logo before heading === */
