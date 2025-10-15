@@ -18,9 +18,9 @@
 /* Inner wrapper for flex layout */
 .promotional-banner-wrapper .promotional-banner__inner {
     display: flex;
-    margin-inline: 6rem;
+    margin-inline: 8rem;
     gap: 1rem;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 /* Left column */
@@ -29,6 +29,8 @@
     max-width: 200px;
     display: flex;
     align-items: center;
+    border-right: 1px solid white;
+    padding-inline-end: 2rem;
 }
 
 /* Right column: visually wrap the two RTEs */

@@ -2,7 +2,11 @@
 .section.twocoloumwithimage-container {
   background: linear-gradient(to bottom, #ffffff 0%, #e8f5fd 100%) !important;
   box-sizing: border-box;
+  .twocoloumwithimage-wrapper {
+       margin-inline: 5rem;
+  }
 }
+
 
 /* === Block grid layout === */
 .section.twocoloumwithimage-container .twocoloumwithimage.block {
@@ -24,23 +28,29 @@
 
 /* === Title (h1) === */
 .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2) h1 {
-  font-family: var(--font-univers-bold-condensed) !important;
+  font-family: Univers LT W01_67 Bold_1476016 !important;
   font-size: 40px !important;
   font-weight: 700 !important;
   color: #00a3df !important;
   margin: 0 0 20px !important;
   max-width: 500px !important;
+  line-height: 1;
 }
 
 /* === Paragraphs === */
 .section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2) p {
-  font-family: var(--font-univers-ligth), Roboto, Helvetica Neue, Helvetica, Arial, sans-serif, "abbv-iconFont" !important;
+  font-family: Univers LT W01_67 Bold_1476016 !important;
   line-height: 1.6 !important;
-  font-weight: 300 !important;
   color: #575756 !important;
-  margin: 0 0 20px !important;
   max-width: 600px !important;
+  font-size: 1.3rem;
 }
+
+.section.twocoloumwithimage-container .twocoloumwithimage.block > div:nth-child(2) .button-container ~ p {
+   font-family: Univers LT W01_67 Bold_1476016 !important;
+    font-size: 1rem;
+}
+
 
 /* === CTA Button === */
 .section.twocoloumwithimage-container .twocoloumwithimage.block .button-container a.button {
