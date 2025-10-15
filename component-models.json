@@ -5424,17 +5424,18 @@
     "fields": [
       {
         "component": "richtext",
-        "name": "text",
+        "name": "customtext",
+        "label": "Custom Text",
         "value": "",
-        "label": "Text",
         "valueType": "string"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "title",
-        "placeholder": "Enter title",
-        "label": "Title"
+       "name": "customtitle",
+        "label": "Custom Title",
+        "placeholder": "Enter title"
+    
       }
     ]
   },
