@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p149805-e1528704.adobeaemcloud.com/bin/franklin.delivery/universaleditor/EDS-POC-AbbVie/main"
+    url: "https://author-p131558-e1552862.adobeaemcloud.com/bin/franklin.delivery/universaleditor/EDS-POC-AbbVie/main"
     type: "markup"
     suffix: ".html"
