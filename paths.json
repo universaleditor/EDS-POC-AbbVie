@@ -1,10 +1,10 @@
 {
   "mappings": [
-    "/content/aem-boilerplate/:/",
-    "/content/aem-boilerplate/configuration:/.helix/config.json",
-    "/content/aem-boilerplate/metadata:/metadata.json"
+    "/content/EDS-POC-AbbVie/:/",
+    "/content/EDS-POC-AbbVie/configuration:/.helix/config.json",
+    "/content/EDS-POC-AbbVie/metadata:/metadata.json"
   ],
   "includes": [
-    "/content/aem-boilerplate/"
+    "/content/EDS-POC-AbbVie/"
   ]
 }
